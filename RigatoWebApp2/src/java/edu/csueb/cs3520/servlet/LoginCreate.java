@@ -31,7 +31,6 @@ public class LoginCreate extends HttpServlet {
             throws ServletException, IOException {
             String formType = request.getParameter("formType");
             String url = "/home.jsp";
-            String msg = "";
             if (formType.equals("login")){
                 //handle account login
                request.setAttribute("msg", "Nice try logining I haven't set up the database");
@@ -41,6 +40,10 @@ public class LoginCreate extends HttpServlet {
 
               request.setAttribute("msg", "Nice try creating an account I haven't set up the database");
             }
+            else{
+                request.setAttribute("msg", "too bad create an account");
+            }
+
             this.getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
