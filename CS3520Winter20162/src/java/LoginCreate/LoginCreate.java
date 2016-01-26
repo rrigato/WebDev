@@ -5,6 +5,7 @@
  */
 package LoginCreate;
 
+import edu.csueb.cs3520.utils.AuthUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,21 +33,48 @@ public class LoginCreate extends HttpServlet {
 
 
                 String url = "/createAccount.jsp";
-                String email = request.getParameter("email");
-                String username = request.getParameter("username");
-                String msg;
-                String formType = request.getParameter("formType");
-                if (formType.equals("create")){
-                    request.setAttribute("msg", "Nice try tying to create an account, I haven't set up the database");
-                    request.setAttribute("email",email);
-                    request.setAttribute("username", username);
-      
 
-                }else if (formType.equals("login")){
-                    request.setAttribute("msg", "Nice try tying to login, I haven't set up the database");
-                  
+                try{
+                String formType = request.getParameter("formType");
+                String email = request.getParameter("email");
+
+                String username = request.getParameter("username");
+
+                String msg = "Blank!!!";
+
+                if(formType != null && formType.equals("login")){
+                    // handle a login request
+                    request.setAttribute("msg", "Hi, you tried to login!!!!");
+                    String password = request.getParameter("password");
+
+                    //do some logic to validate credentials
+
+                    //send to appropriate page
+
+                    if (username != null && password!=null && AuthUtils.authenticate(username,password)){
+                        request.setAttribute("username", username);
+                        url = "/loginAccount.jsp";
+                        request.setAttribute("msg", "Too Bad I haven't set up the database");
+                    }
+                    else{
+                        request.setAttribute("errorMsg", "Please Login with correct username/paragraph");
+                        url="/index.jsp";
+                    }
+                } else if (formType.equals("create")){
+                    // handle an account create
+                    request.setAttribute("msg", "Too Bad I haven't set up the database");
+                    request.setAttribute("username", username);
+                    request.setAttribute("email", email);
+                    url="/createAccount.jsp";
                 }
-        this.getServletContext().getRequestDispatcher(url).forward(request, response);
+
+
+        }catch(Exception e){
+        System.err.println("Error occured in " + this.getClass());
+        e.printStackTrace();
+    }finally{
+                            this.getServletContext().getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
