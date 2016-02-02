@@ -29,6 +29,7 @@ public class AdminServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
 
     }
 

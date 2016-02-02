@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Punkiehome1
+ * @author Ryan
  */
 public class LoginCreate extends HttpServlet {
 
@@ -57,7 +57,7 @@ public class LoginCreate extends HttpServlet {
                         request.setAttribute("msg", "Too Bad I haven't set up the database");
                     }
                     else{
-                        request.setAttribute("errorMsg", "Please Login with correct username/paragraph");
+                        request.setAttribute("errorMsg", "Please Login with correct username/password");
                         url="/index.jsp";
                     }
                 } else if (formType.equals("create")){
@@ -72,7 +72,7 @@ public class LoginCreate extends HttpServlet {
         }catch(Exception e){
         System.err.println("Error occured in " + this.getClass());
         e.printStackTrace();
-    }finally{
+        }finally{
                             this.getServletContext().getRequestDispatcher(url).forward(request, response);
         }
     }
