@@ -1,6 +1,6 @@
 <%-- 
-    Document   : welcome
-    Created on : Feb 1, 2016, 4:28:33 PM
+    Document   : about
+    Created on : Feb 1, 2016, 9:37:37 PM
     Author     : Ryan Rigato
 --%>
 
@@ -11,12 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/>
-        <title>Ryan Rigato</title>
+        <title>About Ryan Rigato</title>
     </head>
     <body>
-        <h1>Welcome to my website</h1>
-        <a href="IndexServlet">Click here to login</a>
-        <br>
-        <a href="AboutServlet">Click here for interesting links  </a>
+        <h1>Here is some information about me</h1>
+        <a href ="https://github.com/rrigato">Check out my GitHub account</a>
     </body>
 </html>
