@@ -8,6 +8,10 @@
         <servlet-name>AdminServlet</servlet-name>
         <servlet-class>LoginCreate.AdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>LoginCreate.IndexServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginCreate</servlet-name>
         <url-pattern>/createAccount</url-pattern>
@@ -17,12 +21,16 @@
         <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/AdminServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/IndexServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>welcome.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

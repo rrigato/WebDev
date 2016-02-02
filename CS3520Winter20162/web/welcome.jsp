@@ -10,10 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
-        <link rel="stylesheet" href="include/styles/newcss.css" type="text/css"/>
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/>
+        <title>Ryan Rigato</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Welcome to my website</h1>
+        <a href="IndexServlet">Click here to login</a>
     </body>
 </html>
