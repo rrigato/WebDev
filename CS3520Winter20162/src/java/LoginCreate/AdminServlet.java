@@ -5,8 +5,10 @@
  */
 package LoginCreate;
 
+import edu.csueb.cs3520.bean.User;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,14 @@ public class AdminServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        List <User> userlist = new ArrayList<User>();
+        userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
+        
+        userlist.add( new User("Jane", "Smith", "jane.smith@gmail.com", "jane.smith"));
+        userlist.add(new User("John", "Doe", "jdoe@gmail.com", "jdoe.smith"));
+                userlist.add( new User("Jane", "Doe", "jane.doe@gmail.com", "jane.doe"));
+                request.setAttribute("userlist", userlist);
         this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
 
     }

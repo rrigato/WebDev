@@ -5,6 +5,7 @@
  */
 package LoginCreate;
 
+import edu.csueb.cs3520.bean.User;
 import edu.csueb.cs3520.utils.AuthUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -53,6 +54,9 @@ public class LoginCreate extends HttpServlet {
 
                     if (username != null && password!=null && AuthUtils.authenticate(username,password)){
                         request.setAttribute("username", username);
+                        User user = new User();
+                        user.setUsername(username);
+                        request.getSession().setAttribute("user", user);
                         url = "/loginAccount.jsp";
                         request.setAttribute("msg", "Too Bad I haven't set up the database");
                     }

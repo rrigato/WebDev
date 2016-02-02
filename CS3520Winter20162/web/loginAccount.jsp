@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>${msg}</h1>
-        <p>Your Account Username: ${username}</p>
+        <p>Your Account Username: ${sessionScope.user.username}</p>
         <a href="AdminServlet">Admin Page</a>
         <br>
 
