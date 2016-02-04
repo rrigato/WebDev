@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<%-- 
+    Document   : Header
+    Created on : Feb 3, 2016, 7:42:49 PM
+    Author     : Ryan Rigato
+
+This is a standard HTML document that will be used as the header
+Make sure all jsps include this web page.
+--%>
+
 <html>
     <head>
 
@@ -20,15 +23,16 @@ and open the template in the editor.
 
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a href="" class="navbar-brand">Ryan Rigato</a>
+                    <a href="welcome.jsp" class="navbar-brand">Ryan Rigato</a>
                 </div>
 
                 <!-- Menu Items -->
                 <div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
+                        
+                        <li><a href="IndexServlet">Login</a></li>
+                        <li><a href="AboutServlet">About</a></li>
+
                     </ul>
                 </div>
 
@@ -37,3 +41,4 @@ and open the template in the editor.
 
     </body>
 </html>
+
