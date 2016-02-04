@@ -15,6 +15,7 @@
     </head>
     <body>
         <h1>Here is some information about me</h1>
+        <%--External link to GitHub--%>
         <a href ="https://github.com/rrigato">Check out my GitHub account</a>
     </body>
 </html>
