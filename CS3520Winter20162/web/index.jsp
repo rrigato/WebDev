@@ -16,6 +16,9 @@
               <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
     </head>
     <body>
+        
+        <%--import header --%>
+        <c:import url="Header.jsp"/>        
         <div class="container">
             <div>
                 <div class="row">

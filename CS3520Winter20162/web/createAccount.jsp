@@ -15,6 +15,8 @@
         
     </head>
     <body>
+        <%--import header --%>
+        <c:import url="Header.jsp"/>        
         <h1>${msg}</h1>
         <p>Your created Account Username: ${username}</p>
         <br>

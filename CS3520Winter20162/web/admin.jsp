@@ -17,6 +17,8 @@
         <title>Administration Page</title>
     </head>
     <body>
+        <%--import header --%>
+        <c:import url="Header.jsp"/>
         <div class="container">
         <h1>Welcome to the Admin Page!!!</h1>
          <p>You are logged in as: ${sessionScope.user.username}</p>

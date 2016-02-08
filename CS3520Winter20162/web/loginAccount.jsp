@@ -14,6 +14,8 @@
         <title>Successful login page</title>
     </head>
     <body>
+        <%--import header --%>
+        <c:import url="Header.jsp"/>        
         <h1>${msg}</h1>
         <p>Your Account Username: ${sessionScope.user.username}</p>
         <a href="AdminServlet">Admin Page</a>

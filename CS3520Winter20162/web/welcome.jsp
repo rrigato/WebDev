@@ -18,8 +18,6 @@
     <body>
         <c:import url="Header.jsp"/>
         <h1>Welcome to my website</h1>
-        <a href="IndexServlet">Click here to login</a>
-        <br>
-        <a href="AboutServlet">Click here for interesting links  </a>
+
     </body>
 </html>

@@ -15,6 +15,7 @@ Make sure all jsps include this web page.
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
         <script src="include/js/bootstrap.min.js"></script>
         <script src="include/js/jquery-1.12.0.js"></script>
+        <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
     </head>
     <body>
 
