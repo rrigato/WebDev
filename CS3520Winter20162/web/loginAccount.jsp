@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/>
+        <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
         <title>Successful login page</title>
     </head>
     <body>
@@ -20,6 +21,6 @@
         <p>Your Account Username: ${sessionScope.user.username}</p>
         <a href="AdminServlet">Admin Page</a>
         <br>
-
+        <c:import url="footer.jsp"/>
     </body>
 </html>

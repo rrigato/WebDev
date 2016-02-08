@@ -12,12 +12,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/>
+        
+        <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>        
         <title>Ryan Rigato</title>
 
     </head>
     <body>
         <c:import url="Header.jsp"/>
         <h1>Welcome to my website</h1>
-
+        <c:import url="footer.jsp"/>
     </body>
 </html>

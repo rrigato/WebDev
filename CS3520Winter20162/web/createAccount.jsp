@@ -11,7 +11,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/>
-        <title>Ryan Rigato HW #2</title>
+        
+         <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>       
+        <title>Ryan Rigato </title>
         
     </head>
     <body>
@@ -21,5 +23,7 @@
         <p>Your created Account Username: ${username}</p>
         <br>
         <p>Your created Account email: ${email}</p>
+        
+        <c:import url="footer.jsp"/>
     </body>
 </html>
