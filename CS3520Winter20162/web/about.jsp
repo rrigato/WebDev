@@ -25,6 +25,10 @@
         <%--External link to GitHub--%>
         <a href ="https://github.com/rrigato">Check out my GitHub account</a>
         
+        <br>       
+        <br>
+        <a href ="https://www.kaggle.com/ryanrigato/results">Take a look at my Kaggle Profile </a>
+        
         <c:import url="footer.jsp"/>
     </body>
 </html>

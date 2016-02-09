@@ -16,7 +16,8 @@
          <link rel="stylesheet" href="include/styles/end.css" type="text/css"/> 
     </head>
     <body>
+        <div class="footer" /> 
             <p>&copy;Ryan Rigato 2016 </p>
- 
+        </div>
     </body>
 </html>
