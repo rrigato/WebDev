@@ -10,9 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
-        <link rel="stylesheet" href="include/styles/bottom.css" type="text/css"/>
+         <script src="include/js/jquery-1.12.0.js"></script>    
+         <script src="include/js/bootstrap.min.js"></script>
+
+         <link rel="stylesheet" href="include/styles/end.css" type="text/css"/> 
     </head>
     <body>
-            <p>@Ryan Rigato 2016 </p>
+            <p>&copy;Ryan Rigato 2016 </p>
+ 
     </body>
 </html>
