@@ -2,6 +2,11 @@
     Document   : about
     Created on : Feb 1, 2016, 9:37:37 PM
     Author     : Ryan Rigato
+
+
+This page contains links to external sources on other web pages about me.
+
+About servlet links to this page
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

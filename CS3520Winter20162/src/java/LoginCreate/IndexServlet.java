@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Ryan Rigato
+ * 
+ * Forwards to the index.jsp 
+ * Which is the login and create account page
  */
 public class IndexServlet extends HttpServlet {
 

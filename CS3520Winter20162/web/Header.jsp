@@ -5,6 +5,8 @@
 
 This is a standard HTML document that will be used as the header
 Make sure all jsps include this web page.
+
+This header contains the navbar which is accesible at all pages
 --%>
 
 <html>

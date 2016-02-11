@@ -2,6 +2,8 @@
     Document   : welcome
     Created on : Feb 1, 2016, 4:28:33 PM
     Author     : Ryan Rigato
+
+This is the first page the user sees when they go onto the website
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

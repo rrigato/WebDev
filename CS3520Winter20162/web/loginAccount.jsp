@@ -2,6 +2,11 @@
     Document   : loginAccount
     Created on : Jan 25, 2016, 8:51:34 PM
     Author     : Ryan
+
+
+Page that shows up after you login.
+Gets the user object from the sessionScope
+And links to the admin Servlet
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

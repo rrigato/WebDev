@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Ryan
+ * 
+ * Servlet that handles the logic behind logining and creating an account
+ * Forwards to either loginAccount.jsp or createAccount.jsp
  */
 public class LoginCreate extends HttpServlet {
 
@@ -54,6 +57,8 @@ public class LoginCreate extends HttpServlet {
 
                     if (username != null && password!=null && AuthUtils.authenticate(username,password)){
                         request.setAttribute("username", username);
+                        
+                        //Creates a user object and stores it in the session scope
                         User user = new User();
                         user.setUsername(username);
                         request.getSession().setAttribute("user", user);

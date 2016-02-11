@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Ryan Rigato
+ * 
+ * Forwards to the about page when called
  */
 public class AboutServlet extends HttpServlet {
 

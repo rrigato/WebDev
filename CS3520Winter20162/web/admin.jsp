@@ -2,6 +2,9 @@
     Document   : admin
     Created on : Jan 27, 2016, 6:35:44 PM
     Author     : Ryan Rigato
+
+This is the admin page that displays who is logged in
+Depends on the Admin Servlet 
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,6 +32,8 @@
                  <th>Email</th>
                  <th>Username</th>
              </tr>
+             
+                     <%--Runs for each user provided by adminServlet --%>
              <c:forEach var="user" items = "${requestScope.userlist}">
                  <tr>
                      <td>${user.firstname}</td>

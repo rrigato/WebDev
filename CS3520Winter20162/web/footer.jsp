@@ -2,6 +2,8 @@
     Document   : footer
     Created on : Feb 7, 2016, 7:26:09 PM
     Author     : Ryan Rigato
+
+Footer only has a copywright symbol at the moment
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

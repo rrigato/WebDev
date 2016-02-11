@@ -2,6 +2,9 @@
     Document   : create
     Created on : Jan 24, 2016, 3:22:38 PM
     Author     : Ryan
+
+This page is sent to after someone creates an account
+Depends on the LoginCreate Java Servlet
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

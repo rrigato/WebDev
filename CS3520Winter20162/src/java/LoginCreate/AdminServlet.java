@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Ryan Rigato
+ * 
+ * Sets a userlist object to the request scope and
+ * forwards control to admin.jsp
  */
 public class AdminServlet extends HttpServlet {
 
@@ -32,13 +35,19 @@ public class AdminServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
+        //hard coded values that will be used for dynamic table using jstl tags
+        //Can Change this in the future so that it checks which users are logged in
         List <User> userlist = new ArrayList<User>();
         userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
         
         userlist.add( new User("Jane", "Smith", "jane.smith@gmail.com", "jane.smith"));
         userlist.add(new User("John", "Doe", "jdoe@gmail.com", "jdoe.smith"));
-                userlist.add( new User("Jane", "Doe", "jane.doe@gmail.com", "jane.doe"));
-                request.setAttribute("userlist", userlist);
+        userlist.add( new User("Jane", "Doe", "jane.doe@gmail.com", "jane.doe"));
+        
+        userlist.add(new User("ryan", "rigato", "rrigato@gmail.com", "r.rigato"));
+        
+        request.setAttribute("userlist", userlist);
         this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
 
     }

@@ -2,6 +2,8 @@
     Document   : index
     Created on : Jan 25, 2016, 8:24:47 PM
     Author     : Ryan
+
+Login page where users can login or create an account
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
