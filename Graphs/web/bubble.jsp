@@ -15,25 +15,31 @@
     <body>
         <script>
             
-var     diameter = 1000,
+var     width = 750,
+        height  = 500,
         format = d3.format(",d"),
         color = d3.scale.category20b(); 
 
             var bubble = d3.layout.pack()
                 .sort(null)
-                .size([diameter, diameter])
+                .size([width, height])
                 .padding(1.5);
 
             var svg = d3.select("body")
                 .append("svg")
-                .attr("width", diameter)
-                .attr("height", diameter)
-                .attr("class", "bubble");
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "bubble")
+
+                .text("Bubble graph of A Versus B");
         
                 var color = d3.scale.linear()
                     .domain([0,100])
                     .range(["red", "blue"]);
-
+                    
+                var size = d3.scale.sqrt()
+                        .domain([0,100])
+                        .range([0,100]);
 
         d3.csv("Data/letters1.csv", function(error, data){
             if (error) throw error;
@@ -58,7 +64,7 @@ var     diameter = 1000,
                 console.log(bubbles);
             //create the bubbles
             bubbles.append("circle")
-                .attr("r", function(d){ return d.value; })
+                .attr("r", function(d){ return size(d.value); })
                 .attr("cx", function(d){ return d.x; })
                 .attr("cy", function(d){ return d.y; })
                 .style("fill", function(d) { return color(d.value); });
