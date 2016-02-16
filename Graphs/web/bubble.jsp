@@ -14,10 +14,37 @@
     </head>
     <body>
         <script>
-            var diamter = 250,
-                    color = d3.scale.category20c()
+            
+            
+            //initialize variables
+            var     color = d3.scale.category20c(),
                     width = 500,
                     height = 500;
+            
+            
+            // layout pack is used for bubble plots
+            var bubble = d3.layout.pack()
+                .sort(null)
+                .size([width, height])
+                .padding(1.5);
+        
+        
+        
+            //create the template where the plot will go
+             var template = d3.select("body")
+                 .append("svg")
+                 .attr("width", width)
+                 .attr("height", height)
+                  .attr("class", "bubble");
+          
+           d3.csv("Data/letters1.csv", function(data){
+               
+
+
+  
+     
+               
+           });
             
             
         </script>
