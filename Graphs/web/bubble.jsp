@@ -15,36 +15,58 @@
     <body>
         <script>
             
-            
-            //initialize variables
-            var     color = d3.scale.category20c(),
-                    width = 500,
-                    height = 500;
-            
-            
-            // layout pack is used for bubble plots
-            var bubble = d3.layout.pack()
-                .sort(null)
-                .size([width, height])
-                .padding(1.5);
-        
-        
-        
-            //create the template where the plot will go
-             var template = d3.select("body")
-                 .append("svg")
-                 .attr("width", width)
-                 .attr("height", height)
-                  .attr("class", "bubble");
-          
-           d3.csv("Data/letters1.csv", function(data){
-               
+var     diameter = 750,
+        color = d3.scale.category20b(); 
 
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(1.5);
 
-  
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
+
+d3.csv("Data/letters1.csv", function(error, data){
+
+    //convert numerical values from strings to numbers
+    data = data.map(function(d){ d.value = parseInt(d.Amount); return d; });
+
+    console.log(data);
+    //bubbles needs very specific format, convert data to this.
+    var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
+    console.log(nodes);
+    //setup the chart
+    var bubbles = svg.append("g")
+        .attr("transform", "translate(0,0)")
+        .selectAll(".bubble")
+        .data(nodes)
+        .enter();
+
+        
+    //create the bubbles
+    bubbles.append("circle")
+        .attr("r", function(d){ return d.value; })
+        .attr("cx", function(d){ return d.x; })
+        .attr("cy", function(d){ return d.y; })
+        .style("fill", function(d) { return color(d.value); });
+
+    //format the text for each bubble
+    bubbles.append("text")
+        .attr("x", function(d){ return d.x; })
+        .attr("y", function(d){ return d.y + 5; })
+        .attr("text-anchor", "middle")
+        .text(function(d){ return d.Name; })
+        .style({
+            "fill":"white", 
+            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+            "font-size": "12px"
+        });
+        
      
-               
-           });
+});
             
             
         </script>
