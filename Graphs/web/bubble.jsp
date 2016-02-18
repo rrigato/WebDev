@@ -54,7 +54,8 @@ var     width = 750,
             
 
 
-            //setup the chart
+            //automatically creates the g svg element
+            //.enter() because it is more data elements than dom elements
             var bubbles = svg.append("g")
                 .attr("transform", "translate(0,0)")
                 .selectAll(".bubble")
@@ -63,6 +64,9 @@ var     width = 750,
 
                 console.log(bubbles);
             //create the bubbles
+            //need to take the squareroot from the size scale,
+            //cause the area is pi*r^2
+            //color is also a function of a scale.
             bubbles.append("circle")
                 .attr("r", function(d){ return size(d.value); })
                 .attr("cx", function(d){ return d.x; })
@@ -71,9 +75,10 @@ var     width = 750,
 
 
 
-
+                
 
             //format the text for each bubble
+            //Adds the name of each text
             bubbles.append("text")
                 .attr("x", function(d){ return d.x; })
                 .attr("y", function(d){ return d.y + 5; })
