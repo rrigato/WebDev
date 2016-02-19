@@ -72,8 +72,8 @@ var svg = d3.select("body").append("svg")
 d3.csv("Data/graduationRate.csv", type, function(error, data) {
   if (error) throw error;
 
-  x.domain(data.map(function(d) { return d.year; }));
-  y.domain([0, d3.max(data, function(d) { return d.percent; })]);
+  x.domain(data.map(function(d) { return d.Year; }));
+  y.domain([0, d3.max(data, function(d) { return d.Percent; })]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -94,14 +94,14 @@ d3.csv("Data/graduationRate.csv", type, function(error, data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.year); })
+      .attr("x", function(d) { return x(d.Year); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.percent); })
-      .attr("height", function(d) { return height - y(d.percent); });
+      .attr("y", function(d) { return y(d.Percent); })
+      .attr("height", function(d) { return height - y(d.Percent); });
 });
 
 function type(d) {
-  d.percent = +d.percent;
+  d.Percent = +d.Percent;
   return d;
 }
 

@@ -15,10 +15,10 @@
     <body>
         <script>
             
-var     width = 750,
-        height  = 500,
-        format = d3.format(",d"),
-        color = d3.scale.category20b(); 
+             var width = 750,
+                height  = 500,
+                format = d3.format(",d"),
+                color = d3.scale.category20b(); 
 
             var bubble = d3.layout.pack()
                 .sort(null)
@@ -96,6 +96,9 @@ var     width = 750,
             
         </script>
         
+        
         <a href="exampleBubble.jsp">Check the example</anchor>
+        
+        <a href="histogram.jsp">Check histogram plot</anchor>
     </body>
 </html>
