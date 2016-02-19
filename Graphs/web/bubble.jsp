@@ -13,9 +13,10 @@
         <script src="//d3js.org/d3.v3.min.js"></script>
     </head>
     <body>
+        <h2> Plot of A versus B </h2>
         <script>
             
-             var width = 750,
+             var width = 500,
                 height  = 500,
                 format = d3.format(",d"),
                 color = d3.scale.category20b(); 
@@ -29,9 +30,7 @@
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height)
-                .attr("class", "bubble")
-
-                .text("Bubble graph of A Versus B");
+                .attr("class", "bubble");
         
                 var color = d3.scale.linear()
                     .domain([0,100])
@@ -69,9 +68,13 @@
             //color is also a function of a scale.
             bubbles.append("circle")
                 .attr("r", function(d){ return size(d.value); })
-                .attr("cx", function(d){ return d.x; })
-                .attr("cy", function(d){ return d.y; })
-                .style("fill", function(d) { return color(d.value); });
+                .attr("cx", function(d){ return d.x - 30; })
+                .attr("cy", function(d){ return d.y - 30; })
+                .style("fill", function(d) { return color(d.value); })
+                .transition()
+                    .duration(1500)
+                    .attr("cx", function(d){ return d.x + 20; })
+                    .attr("cy", function(d){ return d.y + 20; });
 
 
 
@@ -80,21 +83,21 @@
             //format the text for each bubble
             //Adds the name of each text
             bubbles.append("text")
-                .attr("x", function(d){ return d.x; })
-                .attr("y", function(d){ return d.y + 5; })
+                .attr("x", function(d){ return d.x ; })
+                .attr("y", function(d){ return d.y  ; })
                 .attr("text-anchor", "middle")
                 .text(function(d){return (d.Name + ": " + format(d.value));})
                 .style({
                     "fill":"white", 
                     "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
                     "font-size": "12px"
-                });
+                })
+                .transition()
+                    .duration(1500)
+                    .attr("x", function(d){ return d.x + 20; })
+                    .attr("y", function(d){ return d.y + 20; });
   
-
-
-
-
-
+  
 
         });
             
