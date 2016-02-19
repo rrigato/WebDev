@@ -44,66 +44,89 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    //initializes the width and height of the svg in addition to margins
+    var topMargin = 25, rightMargin = 25,
+        bottomMargin = 35, leftMargin = 35,
+        height = 530 - topMargin - bottomMargin,
+        width = 775 - leftMargin - rightMargin;
 
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
+    //Ordinal scale is used to map the qualitative year variable to 
+    //the display range
+    var x = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1);
 
-var y = d3.scale.linear()
-    .range([height, 0]);
+    //linear mapping for the quantitative variable
+    var y = d3.scale.linear()
+        .range([height, 0]);
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+    //Orients the x axis at the bottom of the graph
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10, "%");
+    // y axis is to the left of the graph
+    //also formats the ticks
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .ticks(10, "%");
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    //Uses the variables above to define the svg element 
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + leftMargin + rightMargin)
+        .attr("height", height + topMargin + bottomMargin)
+        .append("g")
+          .attr("transform", "translate(" + leftMargin + "," + topMargin + ")");
 
-d3.csv("Data/graduationRate.csv", type, function(error, data) {
-  if (error) throw error;
+    // loads the csv file
+    // the convert function turns the string number into an actual numeric value
+    d3.csv("Data/graduationRate.csv", convert, function(error, data) {
+      if (error) throw error;
 
-  x.domain(data.map(function(d) { return d.Year; }));
-  y.domain([0, d3.max(data, function(d) { return d.Percent; })]);
+      //After the data is downloaded, these two calls fill in the domain for 
+      // x and y scales
+      x.domain(data.map(function(d) { return d.Year; }));
+      y.domain([0, d3.max(data, function(d) { return d.Percent; })]);
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      //appends the svg element for x axis
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
 
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Frequency");
+     //appends the y axis 
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+          .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .text("Frequency");
 
-  svg.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.Year); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.Percent); })
-      .attr("height", function(d) { return height - y(d.Percent); });
-});
 
-function type(d) {
-  d.Percent = +d.Percent;
-  return d;
-}
+      //appends the bars for the histogram
+      //have to use .enter() because of data joining
+      //rangeBand() function allows to have the gaps between each bar
+      // have to subtract actual value from the height because I want the
+      // the height to go from the bottom to top
+      svg.selectAll(".bar")
+          .data(data)
+           .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", function(d) { return x(d.Year); })
+              .attr("width", x.rangeBand())
+              .attr("y", function(d) { return y(d.Percent); })
+              .attr("height", function(d) { return height - y(d.Percent); });
+    });
+
+
+    //Turns the string into a numeric
+    function convert(d) {
+      d.Percent = parseFloat(d.Percent);
+      return d;
+    }
 
 </script>
     </body>
