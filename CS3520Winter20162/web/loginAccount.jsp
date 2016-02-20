@@ -31,6 +31,14 @@ And links to the admin Servlet
         <p>Your Account Username: ${sessionScope.user.username}</p>
         <a href="AdminServlet">Admin Page</a>
         <br>
+        
+        <%-- gets 2d array from LoginCreate.java 
+            and outputs it--%>
+        <c:forEach var="number" items ="${numbers}">
+            <c:forEach var="num" items = "${number}"> 
+              ${num}  
+            </c:forEach>
+        </c:forEach>
         <c:import url="footer.jsp"/>
     </body>
 </html>

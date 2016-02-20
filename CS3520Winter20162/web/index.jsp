@@ -14,8 +14,9 @@ Login page where users can login or create an account
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="include/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/>        
         <script src="include/js/jquery-1.12.0.js"></script>
-              <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
+        <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
     </head>
     <body>
         
@@ -64,7 +65,8 @@ Login page where users can login or create an account
                 <br>
                 <div class="row">
                     <c:if test="${requestScope.errorMsg!=null}">
-                    <div class="alert alert-warning" >${errorMsg}</div>
+                        <%-- uses an if test in EL --%>                   
+                        <div class="alert alert-warning" >${errorMsg == null?'There was an issue': errorMsg}</div>
                     </c:if>
                     <div class="col-md-12">
                         <form action="loginAccount" method="post">

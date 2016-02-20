@@ -18,9 +18,9 @@ Footer only has a copywright symbol at the moment
          <link rel="stylesheet" href="include/styles/end.css" type="text/css"/> 
     </head>
 
-        <div class="footer" /> 
-        <p>&copy;Ryan Rigato 2016 </p>
-          
-        </div>
+
+    <footer>
+             <p>&copy;Ryan Rigato 2016 </p>
+     </footer>
 
 </html>

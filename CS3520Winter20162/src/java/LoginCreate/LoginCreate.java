@@ -64,6 +64,19 @@ public class LoginCreate extends HttpServlet {
                         request.getSession().setAttribute("user", user);
                         url = "/loginAccount.jsp";
                         request.setAttribute("msg", "Too Bad I haven't set up the database");
+                        
+                        
+                        //loops through a 2d array
+                        int [] [] numbers;
+                        numbers = new int [4][4];
+                        for (int i = 0; i <4; i++)
+                        {
+                            for(int j = 0 ; j< 4 ; j ++){
+                                numbers[i][j] = i +j;
+                            }
+                                
+                        }
+                        request.setAttribute("numbers", numbers);
                     }
                     else{
                         request.setAttribute("errorMsg", "Please Login with correct username/password");
