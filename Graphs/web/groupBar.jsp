@@ -104,7 +104,25 @@ The source of this data is the China Labor bulletin
                             .attr("y", function(d){return y(d.value);})
                             .attr("height", function(d){return height - y(d.value);})
                             .style("fill", function(d){return color(d.name);});
-            
+                  
+               //Appending a legend to the graph
+               var legend = svg.selectAll(".legend")
+                       .data(yearsUsed.slice().reverse)
+                       .enter().append("g")
+                       .attr("class", "legend")
+                       .attr("transform", function(d,i) {return "translate(0," + i*20 + ")";});
+               
+               legend.append("rect")
+                       .attr("x", width -20)
+                       .attr("width", 20)
+                       .attr("height", 20)
+                       .style("fill", color);
+               
+               legend.append("text")
+                       .attr("x", width - 20)
+                       .attr("dy", ".35em")
+                       .style("text-anchor", "end")
+                       .text(function(d){return d;});
 
 });   
     
