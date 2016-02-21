@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
+        <script src="//d3js.org/d3.v3.min.js"></script>
         <style>
 
                 .bar {
@@ -22,12 +22,12 @@
                 }
 
                 .axis {
-                  font: 10px sans-serif;
+                  font: 11px sans-serif;
                 }
 
                 .axis path,
                 .axis line {
-                  fill: none;
+                  fill: pink;
                   stroke: #000;
                   shape-rendering: crispEdges;
                 }
@@ -41,7 +41,7 @@
     <body>
 
 <body>
-<script src="//d3js.org/d3.v3.min.js"></script>
+
 <script>
 
     //initializes the width and height of the svg in addition to margins
@@ -70,6 +70,13 @@
         .scale(y)
         .orient("left")
         .ticks(10, "%");
+
+
+
+    var colors = d3.scale.linear()
+        .domain([0,100])
+        .range(['#d6e9c6', '#bce8f1', '#faebcc', '#ebccd1']);
+
 
     //Uses the variables above to define the svg element 
     var svg = d3.select("body").append("svg")
@@ -118,7 +125,8 @@
               .attr("x", function(d) { return x(d.Year); })
               .attr("width", x.rangeBand())
               .attr("y", function(d) { return y(d.Percent); })
-              .attr("height", function(d) { return height - y(d.Percent); });
+              .attr("height", function(d) { return height - y(d.Percent); })
+              .style({"fill": function(data,i){return colors(i);}, 'stroke': '#31708f', 'stroke-width': '5'});
     });
 
 

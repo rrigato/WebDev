@@ -16,22 +16,25 @@
         <h2> Plot of A versus B </h2>
         <script>
             
-             var width = 500,
-                height  = 500,
-                format = d3.format(",d"),
-                color = d3.scale.category20b(); 
+                var width = 500,
+                   height  = 500,
+                   format = d3.format(",d"),
+                   color = d3.scale.category20b(); 
 
-            var bubble = d3.layout.pack()
-                .sort(null)
-                .size([width, height])
-                .padding(1.5);
+               var bubble = d3.layout.pack()
+                   .sort(null)
+                   .size([width, height])
+                   .padding(1.5);
 
-            var svg = d3.select("body")
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("class", "bubble");
+               var svg = d3.select("body")
+                   .append("svg")
+                   .attr("width", width)
+                   .attr("height", height)
+                   .attr("class", "bubble");
+           
+                var movement = d3.random.normal();
         
+                
                 var color = d3.scale.linear()
                     .domain([0,100])
                     .range(["red", "blue"]);
@@ -39,6 +42,8 @@
                 var size = d3.scale.sqrt()
                         .domain([0,100])
                         .range([0,100]);
+                
+                
 
         d3.csv("Data/letters1.csv", function(error, data){
             if (error) throw error;
@@ -72,9 +77,9 @@
                 .attr("cy", function(d){ return d.y - 30; })
                 .style("fill", function(d) { return color(d.value); })
                 .transition()
-                    .duration(1500)
-                    .attr("cx", function(d){ return d.x + 20; })
-                    .attr("cy", function(d){ return d.y + 20; });
+                    .duration(100000)
+                    .attr("cx", function(d){ return d.x + movement(5,5); })
+                    .attr("cy", function(d){ return d.y + movement(5,5); });
 
 
 
@@ -93,9 +98,9 @@
                     "font-size": "12px"
                 })
                 .transition()
-                    .duration(1500)
-                    .attr("x", function(d){ return d.x + 20; })
-                    .attr("y", function(d){ return d.y + 20; });
+                    .duration(100000)
+                    .attr("x", function(d){ return d.x + movement(5,5); })
+                    .attr("y", function(d){ return d.y + movement(5,5); });
   
   
 
