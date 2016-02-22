@@ -18,6 +18,7 @@ The source of this data is the China Labor bulletin
         
     </head>
     <body>
+        <h2>China Labor Union Strikes for 2011-2015 </h2>
         <script>
         
         var marginTop = 30, marginBottom = 30,
@@ -53,18 +54,15 @@ The source of this data is the China Labor bulletin
 
  d3.csv("Data/chinaLaborStrike.csv", function(error, data) {
             if (error) throw error;
-            console.log(data);
+
             //Makes a key of the years for which I have strike data
             var yearsUsed = d3.keys(data[0])
                     .filter(function(key){return key !== "Location";});
-            
+  
             data.forEach(
                     function(d){
-                        
                                 d.years = yearsUsed.map(function(name){return {name: name, value: +d[name]}; });
-                
                                }
-                
                 );
         
             //Filling in the domain with hte data
@@ -76,8 +74,10 @@ The source of this data is the China Labor bulletin
             //Appending the svg element for the xAxis
             svg.append("g")
                     .attr("class", "x axis")
-                    .attr("transform", "translate(0," + height + ")");
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
             
+            //Appending the svg element for the yAxis            
             svg.append("g")
                     .attr("class", "y axis")
                     .call(yAxis)
@@ -86,7 +86,7 @@ The source of this data is the China Labor bulletin
                         .attr("y", 6)
                         .attr("dy", ".71em")
                         .style("text-anchor", "end")
-                        .text("Population");
+                        .text("Number of Labor Strikes");
                 
                 //Appending the data to the svg element
                 var location = svg.selectAll(".location")
@@ -94,7 +94,7 @@ The source of this data is the China Labor bulletin
                         .enter().append("g")
                             .attr("class", "location")
                             .attr("transform", function(d) {return "translate(" + x0(d.Location) + ",0)";});
-                
+
                 //Adding the bars for the group barchart
                 location.selectAll("rect")
                         .data(function(d){return d.years;})
@@ -105,21 +105,26 @@ The source of this data is the China Labor bulletin
                             .attr("height", function(d){return height - y(d.value);})
                             .style("fill", function(d){return color(d.name);});
                   
-               //Appending a legend to the graph
+
+               //Appending an svg element to be used for a legend
+               //that will say which years correspond to which color of the bar
                var legend = svg.selectAll(".legend")
-                       .data(yearsUsed.slice().reverse)
+                       .data(yearsUsed)
                        .enter().append("g")
                        .attr("class", "legend")
-                       .attr("transform", function(d,i) {return "translate(0," + i*20 + ")";});
+                       .attr("transform", function(d,i) {return "translate(0," + i*15 + ")";});
                
+               
+
                legend.append("rect")
                        .attr("x", width -20)
                        .attr("width", 20)
                        .attr("height", 20)
                        .style("fill", color);
-               
+                         console.log(legend);     
                legend.append("text")
                        .attr("x", width - 20)
+                       .attr("y", 15)
                        .attr("dy", ".35em")
                        .style("text-anchor", "end")
                        .text(function(d){return d;});
@@ -133,5 +138,5 @@ The source of this data is the China Labor bulletin
         </script>
     </body>
     <br>
-    <a href ="http://maps.clb.org.hk/strikes/en">Source</a>
+    <a href ="http://maps.clb.org.hk/strikes/en">Source: China Labor Bulletin</a>
 </html>
