@@ -89,6 +89,40 @@ body {
             y.domain([0,d3.max(data, function(d) {return d.total;})]);
             
             
+            //adding the x axis to the svg
+            svg.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+            
+            //adding the y axis
+            svg.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis)
+                    .append("text")
+                        .attr("transform", "rotate(-90)") 
+                        .attr("y", 10)
+                        .attr("dy", ".71em")
+                        .style("text-anchor", "end")
+                        .text("Population");
+                
+           var volume = svg.selectAll(".volume")
+                   .data(data)
+                   .enter().append("g")
+                   .attr("class", "g")
+                   .attr("transform", function(d) {return "translate(" + x(d.Volume) + ",0)" });
+           
+           
+           
+                volume.selectAll("rect")
+                        .data(function(d) {return d.series;})
+                        .enter().append("rect")
+                        .attr("width", x.rangeBand())
+                        .attr("y", function(d){ return y(d.y1);})
+                        .attr("height", function(d){return y(d.y0) - y(d.y1);})
+                        .style("fill", function(d) {return color(d.name);});
+            
+            
           
           
           
