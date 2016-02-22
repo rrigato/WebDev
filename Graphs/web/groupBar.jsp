@@ -111,17 +111,18 @@ The source of this data is the China Labor bulletin
                var legend = svg.selectAll(".legend")
                        .data(yearsUsed)
                        .enter().append("g")
-                       .attr("class", "legend")
-                       .attr("transform", function(d,i) {return "translate(0," + i*15 + ")";});
+                           .attr("class", "legend")
+                           .attr("transform", function(d,i) {return "translate(0," + i*15 + ")";});
                
                
-
+               //Append the bars for the legend
                legend.append("rect")
                        .attr("x", width -20)
                        .attr("width", 20)
                        .attr("height", 20)
                        .style("fill", color);
-                         console.log(legend);     
+
+               //Append the text to the legend
                legend.append("text")
                        .attr("x", width - 20)
                        .attr("y", 15)
@@ -130,10 +131,6 @@ The source of this data is the China Labor bulletin
                        .text(function(d){return d;});
 
 });   
-    
-    
-    
-    
     
         </script>
     </body>
