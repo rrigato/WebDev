@@ -51,7 +51,7 @@ body {
             .rangeRound([height, 0]);
     
         var color = d3.scale.ordinal()
-        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+        .range(["#98abc5",  "#a05d56",  "#ff8c00"]);
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -110,7 +110,7 @@ body {
                    .data(data)
                    .enter().append("g")
                    .attr("class", "g")
-                   .attr("transform", function(d) {return "translate(" + x(d.Volume) + ",0)" });
+                   .attr("transform", function(d) {return "translate(" + x(d.Volume) + ",0)"; });
            
            
            
@@ -123,7 +123,29 @@ body {
                         .style("fill", function(d) {return color(d.name);});
             
             
-          
+          //Appending an svg element to be used for a legend
+               //that will say which years correspond to which color of the bar
+               var legend = svg.selectAll(".legend")
+                       .data(color.domain())
+                       .enter().append("g")
+                           .attr("class", "legend")
+                           .attr("transform", function(d,i) {return "translate(0," + i*15 + ")";});
+               
+               
+               //Append the bars for the legend
+               legend.append("rect")
+                       .attr("x", width -20)
+                       .attr("width", 20)
+                       .attr("height", 20)
+                       .style("fill", color);
+
+               //Append the text to the legend
+               legend.append("text")
+                       .attr("x", width - 20)
+                       .attr("y", 15)
+                       .attr("dy", ".35em")
+                       .style("text-anchor", "end")
+                       .text(function(d){return d;});
           
           
           

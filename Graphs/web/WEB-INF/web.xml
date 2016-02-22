@@ -13,6 +13,6 @@ and open the template in the editor.
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>stackedChart.jsp</welcome-file>
+        <welcome-file>bubble.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
