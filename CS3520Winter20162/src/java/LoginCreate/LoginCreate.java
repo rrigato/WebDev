@@ -92,12 +92,12 @@ public class LoginCreate extends HttpServlet {
                     request.setAttribute("username", username);
                     request.setAttribute("email", email);
                     
-                    if (firstname != null && lastname != null && email!= null && username!= null && password != null ){
+                    /*if (firstname != null && lastname != null && email!= null && username!= null && password != null ){
                         User user = new User(firstname, lastname, email, username, password);
                         boolean success = DBUtils.createUser(user);
                         
                         //url = "home.jsp"
-                    }
+                    }*/
                     url="/createAccount.jsp";
                 }
 

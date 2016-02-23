@@ -21,7 +21,7 @@ public class DBUtils {
     
     public static Connection conn = null;
     
-    private static String url = "jdbc:mysql://localhost:3036/cs3520";
+    private static String url = "jdbc:mysql://localhost:3306/cs3520";
     private static String username ="root";
     private static String password = "forCS";
     
@@ -32,6 +32,7 @@ public class DBUtils {
                 
                 Class.forName("com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection(url, username, password);
+                System.out.println("connected");
             }
 
             } catch(Exception e){
@@ -76,7 +77,7 @@ public class DBUtils {
                 return users;
 
             }
-            
+/*            
             public static boolean createUser(User user){
                 Connection connection = getConnection();
                 ResultSet rs = null;
@@ -85,8 +86,8 @@ public class DBUtils {
                 try{
                     stmt = connection.createStatement();
                  int rowCount =    stmt.executeUpdate("Insert INTO User(firstname, lastname, email, username, password)"
-                            + "VALUES ( '" + user.getFirstname() + "', '" + user.getLastname() + "', "+
-                         user.getEmail() + "', " + user.getUsername() + "', " + user.getPassword() + "')");
+                            + "VALUES ( '" + user.getFirstname() + "', '" + user.getLastname() + "', '"+
+                         user.getEmail() + "', '" + user.getUsername() + "', '" + user.getPassword() + "')");
                  
                  if (rowCount >0 ){
                      status = true;
@@ -101,5 +102,5 @@ public class DBUtils {
             }
                 return status;
                         
-}
+}*/
 }

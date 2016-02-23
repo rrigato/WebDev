@@ -41,18 +41,19 @@ public class AdminServlet extends HttpServlet {
         
         //hard coded values that will be used for dynamic table using jstl tags
         //Can Change this in the future so that it checks which users are logged in
-        List <User> userlist = DBUtils.getUsers();//new ArrayList<User>();
-       /* userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
+        //DBUtils.getUsers();
+        List <User> userlist  = DBUtils.getUsers(); //new ArrayList<User>();
+ /*      userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
         
         userlist.add( new User("Jane", "Smith", "jane.smith@gmail.com", "jane.smith"));
         userlist.add(new User("John", "Doe", "jdoe@gmail.com", "jdoe.smith"));
         userlist.add( new User("Jane", "Doe", "jane.doe@gmail.com", "jane.doe"));
         
-        userlist.add(new User("ryan", "rigato", "rrigato@gmail.com", "r.rigato"));
+        userlist.add(new User("ryan", "rigato", "rrigato@gmail.com", "r.rigato"));*/
         
         request.setAttribute("userlist", userlist);
         this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
-*/
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
