@@ -32,7 +32,7 @@ public class DBUtils {
                 
                 Class.forName("com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection(url, username, password);
-                System.out.println("connected");
+
             }
 
             } catch(Exception e){
@@ -70,14 +70,14 @@ public class DBUtils {
                         stmt.close();
                         connection.close();
                     }catch(Exception e){
-                        
+                        e.printStackTrace();
                     }
                 }  
                 
                 return users;
 
             }
-/*            
+            
             public static boolean createUser(User user){
                 Connection connection = getConnection();
                 ResultSet rs = null;
@@ -96,11 +96,24 @@ public class DBUtils {
                 }
                     
             catch(Exception e){
-                
+                e.printStackTrace();
             }finally{
-                   
+                try{
+                    
+                    if(rs != null){
+                        rs.close();
+                    }
+                    if (stmt != null){
+                        stmt.close();
+                    }
+                    if (connection != null){
+                        connection.close();
+                    }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
             }
                 return status;
                         
-}*/
+}
 }
