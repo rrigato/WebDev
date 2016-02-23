@@ -7,6 +7,7 @@ package LoginCreate;
 
 import edu.csueb.cs3520.bean.User;
 import edu.csueb.cs3520.utils.AuthUtils;
+import edu.csueb.cs3520.utils.DBUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -84,9 +85,19 @@ public class LoginCreate extends HttpServlet {
                     }
                 } else if (formType.equals("create")){
                     // handle an account create
+                    String firstname= request.getParameter("firstname");
+                    String lastname = request.getParameter("lastname");
+                    String password = request.getParameter("password");
                     request.setAttribute("msg", "Too Bad I haven't set up the database");
                     request.setAttribute("username", username);
                     request.setAttribute("email", email);
+                    
+                    if (firstname != null && lastname != null && email!= null && username!= null && password != null ){
+                        User user = new User(firstname, lastname, email, username, password);
+                        boolean success = DBUtils.createUser(user);
+                        
+                        //url = "home.jsp"
+                    }
                     url="/createAccount.jsp";
                 }
 

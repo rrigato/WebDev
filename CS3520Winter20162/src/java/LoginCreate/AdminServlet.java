@@ -6,6 +6,7 @@
 package LoginCreate;
 
 import edu.csueb.cs3520.bean.User;
+import edu.csueb.cs3520.utils.DBUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +36,13 @@ public class AdminServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+
+        
         
         //hard coded values that will be used for dynamic table using jstl tags
         //Can Change this in the future so that it checks which users are logged in
-        List <User> userlist = new ArrayList<User>();
-        userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
+        List <User> userlist = DBUtils.getUsers();//new ArrayList<User>();
+       /* userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
         
         userlist.add( new User("Jane", "Smith", "jane.smith@gmail.com", "jane.smith"));
         userlist.add(new User("John", "Doe", "jdoe@gmail.com", "jdoe.smith"));
@@ -49,7 +52,7 @@ public class AdminServlet extends HttpServlet {
         
         request.setAttribute("userlist", userlist);
         this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
-
+*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

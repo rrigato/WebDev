@@ -20,6 +20,7 @@ public class User implements Serializable {
     private String lastname;
     private String email;
     private String username;
+    private String password;
 
     public User() {
     }
@@ -29,6 +30,14 @@ public class User implements Serializable {
         this.lastname = lastname;
         this.email = email;
         this.username = username;
+    }
+    
+        public User(String firstname, String lastname, String email, String username, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.username = username;
+        this.password = password;
     }
 
     public String getFirstname() {
@@ -62,5 +71,14 @@ public class User implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
 }

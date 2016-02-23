@@ -31,6 +31,24 @@ Login page where users can login or create an account
                     <div class="col-md-12">
                         <form action="createAccount" method="post">
                             <input type="hidden" name="formType" value="create"/>
+                             <div class="row">
+                                    <div class="col-md-2">
+                                        <label class="control-label">FirstName</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" name="firstname"/>
+                                    </div>
+                                </div>
+                            
+                             <div class="row">
+                                    <div class="col-md-2">
+                                        <label class="control-label">Lastname</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" name="lastname"/>
+                                    </div>
+                                </div>
+                            
                                 <div class="row">
                                     <div class="col-md-2">
                                         <label class="control-label">Username</label>

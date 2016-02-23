@@ -32,7 +32,7 @@ About servlet links to this page
         
         <br>       
         <br>
-        <a href ="https://www.kaggle.com/ryanrigato/results">Take a look at my Kaggle Profile </a>
+        <a href ="https://www.kaggle.com/ryanrigato">Take a look at my Kaggle Profile </a>
         
         <c:import url="footer.jsp"/>
     </body>

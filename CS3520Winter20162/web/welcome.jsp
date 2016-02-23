@@ -20,7 +20,6 @@ This is the first page the user sees when they go onto the website
         <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>        
         <title>Ryan Rigato</title>
 
-
     </head>
     <c:import url="Header.jsp"/>    
     <body>
