@@ -44,6 +44,8 @@ for 2/16 until 2/23
             <div id="chart"></div>
             <div id="dataset-picker"> </div>
         <script>
+            
+            // variables for the margin
             var marginTop = 30, marginBottom = 30,
                 marginLeft = 35, marginRight = 35,
                 width = 960 - marginLeft - marginRight,
@@ -55,7 +57,7 @@ for 2/16 until 2/23
                     legendWidth = gridSize * 2,
                      colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"];
             
-            
+            //variables for the days and times
             var   days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
           times = ["1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", 
                     "12am", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm", "12pm"];
@@ -88,7 +90,9 @@ for 2/16 until 2/23
                             .style("text-anchor", "middle")
                             .attr("transform", "translate(" + gridSize/2 + ",-6)")
                             .attr("class", function(d,i){  return ((i >=7 && i <= 16)? "timeLabel mono axis axis-worktime" : "timeLabel mono axis");  });
-                var heatMap = function(dataLocation){
+               
+            //actual heatMap
+            var heatMap = function(dataLocation){
                     d3.csv(dataLocation, function (d){
                         return {
                             day: +d.Day,
@@ -97,16 +101,20 @@ for 2/16 until 2/23
                         };
                     },
                     function(error,data){
+                        
+                        //sets the domain and range for the scale of colors which will depend on
+                        //the quantitative d.number which is the google trend score
                         var colorScale = d3.scale.quantile()
                                 .domain([0, buckets -1, d3.max(data, function(d){return d.number;})])
                                 .range(colors);
                         
-                        var cards = svg.selectAll(".hour")
+                        var tiles = svg.selectAll(".hour")
                                 .data(data, function(d) { return d.day + ":" + d.hour;});
                         
-                        cards.append("title");
+                        tiles.append("title");
                         
-                        cards.enter().append("rect")
+                        //adds the rectangles which represent each individual hour/day combination
+                        tiles.enter().append("rect")
                                 .attr("x", function(d){return (d.hour -1) * gridSize;})
                                 .attr("y", function(d){return (d.day-1)*gridSize ;})
                                 .attr("rx", 4)
@@ -116,12 +124,43 @@ for 2/16 until 2/23
                                 .attr("height", gridSize)
                                 .style("fill", colors[0]);
                         
-                        cards.transition().duration(1000)
-                                .style("fill", function (d) {return colorScale(d.number);})
-                        cards.select("title")
+                        
+                        //Fills the tile with a color based on the value of the google trend
+                        tiles.transition().duration(1000)
+                                .style("fill", function (d) {return colorScale(d.number);});
+                        
+                        tiles.select("title")
                                 .text(function(d){return d.number;});
                         
-                        cards.exit().remove();
+                        tiles.exit().remove();
+                        
+                        
+                       //legend variables which will show the scale of colors covered
+                       //for the heat map
+                        var legend = svg.selectAll(".legend")
+                                .data([0].concat(colorScale.quantiles()), function(d){return d;});
+                        
+                        legend.enter().append("g")
+                                .attr("class", "legend");
+                        
+                        
+                        //appends each tile as an example of the color
+                        legend.append("rect")
+                                .attr("x", function(d,i){return legendWidth * i;})
+                                .attr("y", height - 100)
+                                .attr("width", legendWidth)
+                                .attr("height", gridSize/2)
+                                .style("fill", function(d,i){return colors[i];});
+                        
+                        
+                        //appends the text which shows the exact value of cutoff for each 
+                        //tile
+                        legend.append("text")
+                                .text(function(d) { return ">=" + Math.round(d);})
+                                .attr("x", function(d,i){return legendWidth * i;})
+                                .attr("y", height - 100 + gridSize);
+                        
+                        legend.exit().remove();
                         
                     });
                     
