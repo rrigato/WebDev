@@ -51,6 +51,7 @@ for 2/16 until 2/23
             
             
             var gridSize = Math.floor(width/24),
+                    buckets = 9,
                     legendWidth = gridSize * 2,
                      colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"];
             
@@ -87,7 +88,48 @@ for 2/16 until 2/23
                             .style("text-anchor", "middle")
                             .attr("transform", "translate(" + gridSize/2 + ",-6)")
                             .attr("class", function(d,i){  return ((i >=7 && i <= 16)? "timeLabel mono axis axis-worktime" : "timeLabel mono axis");  });
+                var heatMap = function(dataLocation){
+                    d3.csv(dataLocation, function (d){
+                        return {
+                            day: +d.Day,
+                            hour: +d.Hour,
+                            number: +d.Number 
+                        };
+                    },
+                    function(error,data){
+                        var colorScale = d3.scale.quantile()
+                                .domain([0, buckets -1, d3.max(data, function(d){return d.number;})])
+                                .range(colors);
+                        
+                        var cards = svg.selectAll(".hour")
+                                .data(data, function(d) { return d.day + ":" + d.hour;});
+                        
+                        cards.append("title");
+                        
+                        cards.enter().append("rect")
+                                .attr("x", function(d){return (d.hour -1) * gridSize;})
+                                .attr("y", function(d){return (d.day-1)*gridSize ;})
+                                .attr("rx", 4)
+                                .attr("ry", 5)
+                                .attr("class", "hour bordered")
+                                .attr("width", gridSize)
+                                .attr("height", gridSize)
+                                .style("fill", colors[0]);
+                        
+                        cards.transition().duration(1000)
+                                .style("fill", function (d) {return colorScale(d.number);})
+                        cards.select("title")
+                                .text(function(d){return d.number;});
+                        
+                        cards.exit().remove();
+                        
+                    });
+                    
+                };
                 
+                heatMap("Data/batmanSuperman.csv");
+                
+
         </script>
         
         
