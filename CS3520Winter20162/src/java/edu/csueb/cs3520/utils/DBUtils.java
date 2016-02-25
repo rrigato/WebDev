@@ -70,7 +70,8 @@ public class DBUtils {
                     //will return false when there are no more rows to read
                     while(rs.next()){
                         //System.out.println("Name: " + rs.getString("firstname") + " " + rs.getString("lastname"));
-                        //uses the java bean to get the 
+                        //uses the java bean to get the
+                        //rs.attributeName with the name of the column in the string
                         user = new User(rs.getString("firstname"), rs.getString("lastname"), 
                                 rs.getString("email"), rs.getString("username"));
                         //adds each to the userlist
@@ -129,13 +130,13 @@ public class DBUtils {
                 try{
                     //if statements prevent closing the database from throwing a null pointer exception
                     if(rs != null){
-                       // rs.close();
+                        rs.close();
                     }
                     if (stmt != null){
-                        //stmt.close();
+                        stmt.close();
                     }
                     if (connection != null){
-                        //connection.close();
+                        connection.close();
                     }
                     }catch(Exception e){
                         e.printStackTrace();
@@ -144,4 +145,49 @@ public class DBUtils {
                 return status;
                         
 }
+            
+            //update the a user attribute
+               public static boolean updateUser(User user){
+                Connection connection = getConnection();
+                Statement stmt = null;
+                
+                //status that will be returned
+                boolean status = false;
+                try{
+                    stmt = connection.createStatement();
+                    
+                    //Inserts the user list into the database
+                 int rowCount =    stmt.executeUpdate("Update User SET firstname='"  + user.getFirstname() +
+                         "', lastname='" + user.getLastname() +  
+                         "', username = '" + user.getUsername() + 
+                         "', password = '" + user.getPassword() + 
+                         "' " + "WHERE email = '" + user.getEmail() + "'");
+                         
+                 if (rowCount >0 ){
+                     status = true;
+                 }
+                    
+                }
+                    
+            catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                try{
+                    //if statements prevent closing the database from throwing a null pointer exception
+                    if (stmt != null){
+                        stmt.close();
+                    }
+                    if (connection != null){
+                        connection.close();
+                    }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+            }
+                return status;
+                        
 }
+                        
+                        
+                        
+}//dbutils class

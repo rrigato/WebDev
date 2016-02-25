@@ -32,6 +32,7 @@ Depends on the Admin Servlet
                  <th>Last Name</th>
                  <th>Email</th>
                  <th>Username</th>
+                 <th>Action(s)</th>
              </tr>
              
                      <%--Runs for each user provided by adminServlet --%>
@@ -41,10 +42,40 @@ Depends on the Admin Servlet
                      <td>${user.lastname}</td>
                      <td>${user.email}</td>
                      <td>${user.username}</td>
+                     <td>
+                         <!-- Trigger the modal with a button 
+                         
+                         -->
+                                <button type="button" class="btn btn-warning btn-sm" 
+                                        data-toggle="modal" data-target="#editForm">Edit</button>
+
+                     </td>
                  </tr>
                  
              </c:forEach>
          </table>
+             
+             
+             <!-- Modal -->
+                    <div id="editForm" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>Some text in the modal.</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
          </div>
          
        <c:import url="footer.jsp"/>
