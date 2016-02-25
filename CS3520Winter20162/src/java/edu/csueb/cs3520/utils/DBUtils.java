@@ -30,21 +30,12 @@ public class DBUtils {
     
     public static Connection getConnection(){
         try{
-
-            
-                if (conn == null){
-
                   Class.forName("com.mysql.jdbc.Driver");
                     
-                    
-                    //gets the connection by passing a url, username, and password
-                    conn = DriverManager.getConnection(url, username, password);
+                  //gets the connection by passing a url, username, and password
+                  conn = DriverManager.getConnection(url, username, password);
 
 
-
-
-
-                }
 
             } catch(Exception e){
             System.err.println(e.getMessage());
@@ -91,15 +82,15 @@ public class DBUtils {
                     try{
                     //if statements prevent closing the database from throwing a null pointer exception
                     if (rs != null){
-                         //rs.close();
+                         rs.close();
                     }
 
                     if (stmt != null){
-                        //stmt.close();
+                        stmt.close();
                     }
                     if(connection != null)
                     {
-                        //connection.close();
+                        connection.close();
                     }
                     
                     }catch(Exception e){
