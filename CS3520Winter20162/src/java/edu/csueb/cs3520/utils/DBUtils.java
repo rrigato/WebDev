@@ -19,61 +19,94 @@ import java.util.List;
  */
 public class DBUtils {
     
-    public static Connection conn = null;
-    
-    private static String url = "jdbc:mysql://localhost:3306/cs3520";
-    private static String username ="root";
-    private static String password = "forCS";
+       public static Connection conn = null;
+       
+        //connects to the database on port 3306
+        private static String url = "jdbc:mysql://localhost:3306/cs3520";
+
+        //username and password to the dataset
+        private static String username ="root";
+        private static String password = "forCS";
     
     public static Connection getConnection(){
-        
         try{
-            if (conn == null){
-                
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection(url, username, password);
 
-            }
+            
+                if (conn == null){
+
+                  Class.forName("com.mysql.jdbc.Driver");
+                    
+                    
+                    //gets the connection by passing a url, username, and password
+                    conn = DriverManager.getConnection(url, username, password);
+
+
+
+
+
+                }
 
             } catch(Exception e){
             System.err.println(e.getMessage());
             e.printStackTrace();
         }
+        //returns the connection object which is connected to the database
         return conn;
 
     }
 
     public static List<User>  getUsers(){
                 Connection connection = getConnection();
-                ResultSet rs = null;
-                Statement stmt = null;
+                ResultSet rs ;
+                rs = null;
+                Statement stmt; 
+                stmt = null;
+                
+                //initializing a list that will be used to return the users
                 List <User> users = new ArrayList<User>();
                 try{
                    stmt = connection.createStatement();
+                   
+                   //sql query to get the result from
                      rs = stmt.executeQuery("Select * from User" 
                     );
                     //while there is a new row
                     
 
                     User user;
+                    
+                    //rs.next() starts at -1 and goes to 0
+                    //will return false when there are no more rows to read
                     while(rs.next()){
                         //System.out.println("Name: " + rs.getString("firstname") + " " + rs.getString("lastname"));
+                        //uses the java bean to get the 
                         user = new User(rs.getString("firstname"), rs.getString("lastname"), 
                                 rs.getString("email"), rs.getString("username"));
+                        //adds each to the userlist
                         users.add(user);
                     }
                 }catch(Exception e){
                     e.printStackTrace();
                 }finally{
                     try{
-                        rs.close();
-                        stmt.close();
-                        connection.close();
+                    //if statements prevent closing the database from throwing a null pointer exception
+                    if (rs != null){
+                         //rs.close();
+                    }
+
+                    if (stmt != null){
+                        //stmt.close();
+                    }
+                    if(connection != null)
+                    {
+                        //connection.close();
+                    }
+                    
                     }catch(Exception e){
                         e.printStackTrace();
                     }
                 }  
-                
+                //returns the userlist to the servlet
                 return users;
 
             }
@@ -82,9 +115,13 @@ public class DBUtils {
                 Connection connection = getConnection();
                 ResultSet rs = null;
                 Statement stmt = null;
+                
+                //status that will be returned
                 boolean status = false;
                 try{
                     stmt = connection.createStatement();
+                    
+                    //Inserts the user list into the database
                  int rowCount =    stmt.executeUpdate("Insert INTO User(firstname, lastname, email, username, password)"
                             + "VALUES ( '" + user.getFirstname() + "', '" + user.getLastname() + "', '"+
                          user.getEmail() + "', '" + user.getUsername() + "', '" + user.getPassword() + "')");
@@ -99,15 +136,15 @@ public class DBUtils {
                 e.printStackTrace();
             }finally{
                 try{
-                    
+                    //if statements prevent closing the database from throwing a null pointer exception
                     if(rs != null){
-                        rs.close();
+                       // rs.close();
                     }
                     if (stmt != null){
-                        stmt.close();
+                        //stmt.close();
                     }
                     if (connection != null){
-                        connection.close();
+                        //connection.close();
                     }
                     }catch(Exception e){
                         e.printStackTrace();

@@ -88,15 +88,30 @@ public class LoginCreate extends HttpServlet {
                     String firstname= request.getParameter("firstname");
                     String lastname = request.getParameter("lastname");
                     String password = request.getParameter("password");
-                    request.setAttribute("msg", "Too Bad I haven't set up the database");
+
                     request.setAttribute("username", username);
                     request.setAttribute("email", email);
                     
+                    
+                    //Adds a new User to the database from the 
                     if (firstname != null && lastname != null && email!= null && username!= null && password != null ){
+                        
+                        //Adds a new user to the user object
                         User user = new User(firstname, lastname, email, username, password);
+                        
+                        //places the user in the database
                         boolean success = DBUtils.createUser(user);
                         
-                        //url = "home.jsp"
+                        //sends a message to a jsp dependent on whether the user was added to the database
+                        //or not
+                        if (success){
+                             request.setAttribute("msg", "Thank you for creating an Account, please go to login");
+                        }else
+                        {
+                           request.setAttribute("msg", "Error: Unable to create account, please try again");   
+                        }
+                        
+
                     }
                     url="/createAccount.jsp";
                 }
