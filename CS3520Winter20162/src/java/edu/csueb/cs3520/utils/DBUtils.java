@@ -28,6 +28,7 @@ public class DBUtils {
         private static String username ="root";
         private static String password = "forCS";
     
+    //returns a connection to the database    
     public static Connection getConnection(){
         try{
                   Class.forName("com.mysql.jdbc.Driver");
@@ -44,8 +45,9 @@ public class DBUtils {
         //returns the connection object which is connected to the database
         return conn;
 
-    }
+    }//getConnection function
 
+    //This function returns a list of users from the database
     public static List<User>  getUsers(){
                 Connection connection = getConnection();
                 ResultSet rs ;
@@ -101,93 +103,136 @@ public class DBUtils {
                 //returns the userlist to the servlet
                 return users;
 
-            }
+            }//getUsers method
             
+    
+            //This function creates a new user in the database
             public static boolean createUser(User user){
-                Connection connection = getConnection();
-                ResultSet rs = null;
-                Statement stmt = null;
-                
-                //status that will be returned
-                boolean status = false;
-                try{
-                    stmt = connection.createStatement();
-                    
-                    //Inserts the user list into the database
-                 int rowCount =    stmt.executeUpdate("Insert INTO User(firstname, lastname, email, username, password)"
-                            + "VALUES ( '" + user.getFirstname() + "', '" + user.getLastname() + "', '"+
-                         user.getEmail() + "', '" + user.getUsername() + "', '" + user.getPassword() + "')");
-                 
-                 if (rowCount >0 ){
-                     status = true;
-                 }
-                    
+                    Connection connection = getConnection();
+                    ResultSet rs = null;
+                    Statement stmt = null;
+
+                    //status that will be returned
+                    boolean status = false;
+                    try{
+                        stmt = connection.createStatement();
+
+                        //Inserts the user list into the database
+                     int rowCount =    stmt.executeUpdate("Insert INTO User(firstname, lastname, email, username, password)"
+                                + "VALUES ( '" + user.getFirstname() + "', '" + user.getLastname() + "', '"+
+                             user.getEmail() + "', '" + user.getUsername() + "', '" + user.getPassword() + "')");
+
+                     if (rowCount >0 ){
+                         status = true;
+                     }
+
+                    }
+
+                catch(Exception e){
+                    e.printStackTrace();
+                }finally{
+                    try{
+                        //if statements prevent closing the database from throwing a null pointer exception
+                        if(rs != null){
+                            rs.close();
+                        }
+                        if (stmt != null){
+                            stmt.close();
+                        }
+                        if (connection != null){
+                            connection.close();
+                        }
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
                 }
-                    
-            catch(Exception e){
-                e.printStackTrace();
-            }finally{
-                try{
-                    //if statements prevent closing the database from throwing a null pointer exception
-                    if(rs != null){
-                        rs.close();
-                    }
-                    if (stmt != null){
-                        stmt.close();
-                    }
-                    if (connection != null){
-                        connection.close();
-                    }
-                    }catch(Exception e){
-                        e.printStackTrace();
-                    }
-            }
-                return status;
+                    return status;
                         
-}
+            }//createUser method
             
             //update the a user attribute
-               public static boolean updateUser(User user){
-                Connection connection = getConnection();
-                Statement stmt = null;
-                
-                //status that will be returned
-                boolean status = false;
-                try{
-                    stmt = connection.createStatement();
-                    
-                    //Inserts the user list into the database
-                 int rowCount =    stmt.executeUpdate("Update User SET firstname='"  + user.getFirstname() +
-                         "', lastname='" + user.getLastname() +  
-                         "', username = '" + user.getUsername() + 
-                         "', password = '" + user.getPassword() + 
-                         "' " + "WHERE email = '" + user.getEmail() + "'");
-                         
-                 if (rowCount >0 ){
-                     status = true;
-                 }
-                    
+            public static boolean updateUser(User user){
+                    Connection connection = getConnection();
+                    Statement stmt = null;
+
+                    //status that will be returned
+                    boolean status = false;
+                    try{
+                        stmt = connection.createStatement();
+
+                        //Inserts the user list into the database
+                     int rowCount =    stmt.executeUpdate("Update User SET firstname='"  + user.getFirstname() +
+                             "', lastname='" + user.getLastname() +  
+                             "', username = '" + user.getUsername() + 
+                             "', password = '" + user.getPassword() + 
+                             "' " + "WHERE email = '" + user.getEmail() + "'");
+
+                     if (rowCount >0 ){
+                         status = true;
+                     }
+
+                    }
+
+                catch(Exception e){
+                    e.printStackTrace();
+                }finally{
+                    try{
+                        //if statements prevent closing the database from throwing a null pointer exception
+                        if (stmt != null){
+                            stmt.close();
+                        }
+                        if (connection != null){
+                            connection.close();
+                        }
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
                 }
-                    
-            catch(Exception e){
-                e.printStackTrace();
-            }finally{
-                try{
-                    //if statements prevent closing the database from throwing a null pointer exception
-                    if (stmt != null){
-                        stmt.close();
-                    }
-                    if (connection != null){
-                        connection.close();
-                    }
-                    }catch(Exception e){
-                        e.printStackTrace();
-                    }
-            }
-                return status;
+                    return status;
                         
-}
+            }//updateUser method
                         
+                
+            public static boolean deleteUser(User user){
+                    Connection connection = getConnection();
+                    Statement stmt = null;
+
+                    //status that will be returned
+                    boolean status = false;
+                    try{
+                        stmt = connection.createStatement();
+
+                        //Inserts the user list into the database
+                     int rowCount =    stmt.executeUpdate("DELETE FROM User "
+                             + "WHERE email = '" + user.getEmail() + "'");
+
+                     if (rowCount >0 ){
+                         status = true;
+                     }
+
+                    }
+
+                catch(Exception e){
+                    e.printStackTrace();
+                }finally{
+                    try{
+                        //if statements prevent closing the database from throwing a null pointer exception
+                        if (stmt != null){
+                            stmt.close();
+                        }
+                        if (connection != null){
+                            connection.close();
+                        }
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                }
+                    return status;
                         
+            }//updateUser method            
+            
+            
+            
+            
                         
 }//dbutils class

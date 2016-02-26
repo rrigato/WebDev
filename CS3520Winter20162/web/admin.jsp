@@ -63,6 +63,7 @@ Depends on the Admin Servlet
                  <th>Email</th>
                  <th>Username</th>
                  <th>Action(s)</th>
+                 <th>Action2</th>
              </tr>
              
                      <%--Runs for each user provided by adminServlet --%>
@@ -80,13 +81,17 @@ Depends on the Admin Servlet
                                         data-toggle="modal" data-target="#editForm">Edit</button>
 
                      </td>
+                     <td>
+                          <button class ="delete-button" id = "${user.email}" type="button" 
+                                        data-toggle="modal" data-target="#deleteForm">Delete</button>
+                     </td>
                  </tr>
                  
              </c:forEach>
          </table>
              
              
-             <!-- Modal -->
+             <!-- Edit Modal -->
                     <div id="editForm" class="modal fade" role="dialog">
                       <div class="modal-dialog">
 
@@ -145,6 +150,68 @@ Depends on the Admin Servlet
 
                       </div>
                     </div>
+             
+             <!-- Delete Modal -->
+                    <div id="deleteForm" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                          </div>
+                          <div class="modal-body">
+
+                                    <form action="AdminServlet" method="post" class = "form-horizontal" role = "form">
+                                  <input  type="hidden" name="formType" value="delete"/>
+                                  <input id ="email-field" type ="hidden" name ="email"/>
+                                   <div class="row">
+                                          <div class="col-md-2">
+                                              <label class="control-label">FirstName</label>
+                                          </div>
+                                          <div class="col-md-10">
+                                              <input id ="firstname-field" type="text" name="firstname"/>
+                                          </div>
+                                      </div>
+
+                                   <div class="row">
+                                          <div class="col-md-2">
+                                              <label class="control-label">Lastname</label>
+                                          </div>
+                                          <div class="col-md-10">
+                                              <input id ="lastname-field" type="text" name="lastname"/>
+                                          </div>
+                                      </div>
+
+                                      <div class="row">
+                                          <div class="col-md-2">
+                                              <label class="control-label">Username</label>
+                                          </div>
+                                          <div class="col-md-10">
+                                              <input id="username-field" type="text" name="username"/>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-2">
+                                              <label>Password</label>
+                                          </div>
+                                          <div class="col-md-10">
+                                              <input id="password-field" type="password" name="password"/>
+                                          </div>
+                                      </div>
+                                  <input type ="submit" id="btn"/>
+                                    </form> 
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+             
+             
          </div>
          
        <c:import url="footer.jsp"/>
