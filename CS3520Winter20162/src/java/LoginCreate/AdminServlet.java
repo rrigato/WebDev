@@ -60,6 +60,30 @@ public class AdminServlet extends HttpServlet {
         }
         
         
+                                       System.out.println(type);
+
+                                                       
+        if(null != type && type.equals("delete")){
+       //     String firstname = request.getParameter("firstname");
+         //        String lastname = request.getParameter("lastname");
+           //             String username = request.getParameter("username");
+             //                  String password = request.getParameter("password");
+
+                               User user = new User( );
+                               user.setFirstname(request.getParameter("firstname"));
+                               user.setLastname(request.getParameter("lastname"));
+                               user.setUsername(request.getParameter("username"));
+                               user.setPassword(request.getParameter("password"));
+                               user.setEmail(request.getParameter("email"));
+                               System.out.println("--------------break---------------");
+                               System.out.println(user.getEmail());
+                               System.out.println(user.getPassword());
+                               System.out.println(user.getUsername());
+                               System.out.println(user.getLastname());
+                               System.out.println(user.getFirstname());
+                               
+                              // DBUtils.deleteUser(user);
+        }
        
         
         
