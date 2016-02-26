@@ -57,34 +57,7 @@ Depends on the Admin Servlet
                         
                         
         </script>
-        
-        <script>
-             
-                        $(document).ready(function(){
-                           // alert('hi');
-                           $(".delete-button").click(function(){
-                                var $email = $(this).attr("id");
-                                var $tableRow =  $(this).closest("tr");
-                                //alert($tableRow);
-                                var $firstname = $tableRow.children(".firstname-cell").text();
-                                var $lastname = $tableRow.children(".lastname-cell").text();
-                                var $username = $tableRow.children(".username-cell").text();
-                                var $password = $tableRow.children(".password-cell").text();
-                             
-                             
-                             //id selector that places the variables above into the fields
-                             $("#email-field").val($email);
-                             $("#firstname-field").val($firstname);
-                             $("#lastname-field").val($lastname);
-                             $("#username-field").val($username);
-                             $("#password-field").val($password);
-
-                             
-                             });
-                        });
-        </script>
-        
-
+           
         <div class="container">
         <h1>Welcome to the Admin Page!!!</h1>
          <p>You are logged in as: ${sessionScope.user.username}</p>
@@ -195,42 +168,17 @@ Depends on the Admin Servlet
                           </div>
                           <div class="modal-body">
 
-                              <p> Are you sure you want to delete ${user.email}</p>
+                              <p> Are you sure you want to delete this user. Please
+                              re-enter their email to confirm.</p>
+                              
                             <form action="AdminServlet" method="post" class = "form-horizontal" role = "form">
                                   <input  type="hidden" name="formType" value="delete"/>
-                                  <input id ="email-field" type ="hidden" name ="email"/>
                                    <div class="row">
                                           <div class="col-md-2">
-                                              <label class="control-label">FirstName</label>
+                                              <label class="control-label">Email</label>
                                           </div>
                                           <div class="col-md-10">
-                                              <input id ="firstname-field" type="text" name="firstname"/>
-                                          </div>
-                                      </div>
-
-                                   <div class="row">
-                                          <div class="col-md-2">
-                                              <label class="control-label">Lastname</label>
-                                          </div>
-                                          <div class="col-md-10">
-                                              <input id ="lastname-field" type="text" name="lastname"/>
-                                          </div>
-                                      </div>
-                                  
-                                      <div class="row">
-                                          <div class="col-md-2">
-                                              <label class="control-label">Username</label>
-                                          </div>
-                                          <div class="col-md-10">
-                                              <input id="username-field" type="text" name="username"/>
-                                          </div>
-                                      </div>
-                                      <div class="row">
-                                          <div class="col-md-2">
-                                              <label>Password</label>
-                                          </div>
-                                          <div class="col-md-10">
-                                              <input id="password-field" type="password" name="password"/>
+                                              <input id ="email-field" type="text" name="email"/>
                                           </div>
                                       </div>
                                   <input type ="submit" id="btn"/>
