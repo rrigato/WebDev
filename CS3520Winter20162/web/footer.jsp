@@ -3,7 +3,7 @@
     Created on : Feb 7, 2016, 7:26:09 PM
     Author     : Ryan Rigato
 
-Footer only has a copywright symbol at the moment
+Footer now contains a users login information
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,14 +11,17 @@ Footer only has a copywright symbol at the moment
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
 
-
-         <link rel="stylesheet" href="include/styles/end.css" type="text/css"/> 
     </head>
 
 
     <footer>
+
+                <c:if test="${sessionScope.user.username !=null}">            
+                <p>Login Status: ${sessionScope.user.username == null ? 
+                                   'Not logged in':sessionScope.user.username  }</p>
+               </c:if>
+       
              <p>&copy;Ryan Rigato 2016 </p>
      </footer>
 

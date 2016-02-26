@@ -60,7 +60,7 @@ public class AdminServlet extends HttpServlet {
         }
         
         
-                                       System.out.println(type);
+                        
 
                                                        
         if(null != type && type.equals("delete")){

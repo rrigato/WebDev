@@ -49,7 +49,7 @@ public class LoginCreate extends HttpServlet {
 
                 if(formType != null && formType.equals("login")){
                     // handle a login request
-                    request.setAttribute("msg", "Hi, you tried to login!!!!");
+
                     String password = request.getParameter("password");
 
                     //do some logic to validate credentials
@@ -62,22 +62,13 @@ public class LoginCreate extends HttpServlet {
                         //Creates a user object and stores it in the session scope
                         User user = new User();
                         user.setUsername(username);
+                        
                         request.getSession().setAttribute("user", user);
                         url = "/loginAccount.jsp";
                         request.setAttribute("msg", "Too Bad I haven't set up the database");
                         
                         
-                        //loops through a 2d array
-                        int [] [] numbers;
-                        numbers = new int [4][4];
-                        for (int i = 0; i <4; i++)
-                        {
-                            for(int j = 0 ; j< 4 ; j ++){
-                                numbers[i][j] = i +j;
-                            }
-                                
-                        }
-                        request.setAttribute("numbers", numbers);
+
                     }
                     else{
                         request.setAttribute("errorMsg", "Please Login with correct username/password");
