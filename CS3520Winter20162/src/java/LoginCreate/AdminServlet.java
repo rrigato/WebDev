@@ -42,7 +42,31 @@ public class AdminServlet extends HttpServlet {
         //hard coded values that will be used for dynamic table using jstl tags
         //Can Change this in the future so that it checks which users are logged in
         //DBUtils.getUsers();
-        List <User> userlist  = DBUtils.getUsers(); //new ArrayList<User>();
+          String type  = request.getParameter("formType");
+        if(null != type && type.equals("edit")){
+       //     String firstname = request.getParameter("firstname");
+         //        String lastname = request.getParameter("lastname");
+           //             String username = request.getParameter("username");
+             //                  String password = request.getParameter("password");
+
+                               User user = new User( );
+                               user.setFirstname(request.getParameter("firstname"));
+                               user.setLastname(request.getParameter("lastname"));
+                               user.setUsername(request.getParameter("username"));
+                               user.setPassword(request.getParameter("password"));
+                               user.setEmail(request.getParameter("email"));
+
+                               DBUtils.updateUser(user);
+        }
+        
+        
+        List <User> userlist  = DBUtils.getUsers(); 
+
+        
+
+
+
+//new ArrayList<User>();
  /*      userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
         
         userlist.add( new User("Jane", "Smith", "jane.smith@gmail.com", "jane.smith"));

@@ -12,8 +12,7 @@ Footer only has a copywright symbol at the moment
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
-         <script src="include/js/jquery-1.12.0.js"></script>    
-         <script src="include/js/bootstrap.min.js"></script>
+
 
          <link rel="stylesheet" href="include/styles/end.css" type="text/css"/> 
     </head>
