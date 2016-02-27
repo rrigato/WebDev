@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Ryan
+ * @author Ryan Rigato
  * 
  * Authenticates login when called
  * Authenticates user password and username  when called

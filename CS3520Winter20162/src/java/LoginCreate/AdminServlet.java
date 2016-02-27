@@ -25,6 +25,10 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * Sets a userlist object to the request scope and
  * forwards control to admin.jsp
+ * 
+ * The adminservlet places a userlist in the request scope 
+ * 
+ * And can be user for formType edit or delete
  */
 public class AdminServlet extends HttpServlet {
 
@@ -42,6 +46,9 @@ public class AdminServlet extends HttpServlet {
         
 
         
+        /*
+            Gets the value of the formType which determines whether the admin
+            wants to edit or delete a user.
         
         /*
              Gets the value of the formType which determines whether the admin
@@ -100,17 +107,6 @@ public class AdminServlet extends HttpServlet {
         List <User> userlist  = DBUtils.getUsers(); 
 
   
-
-
-
-//new ArrayList<User>();
- /*      userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
-        
-        userlist.add( new User("Jane", "Smith", "jane.smith@gmail.com", "jane.smith"));
-        userlist.add(new User("John", "Doe", "jdoe@gmail.com", "jdoe.smith"));
-        userlist.add( new User("Jane", "Doe", "jane.doe@gmail.com", "jane.doe"));
-        
-        userlist.add(new User("ryan", "rigato", "rrigato@gmail.com", "r.rigato"));*/
         
         request.setAttribute("userlist", userlist);
         this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);

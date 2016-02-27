@@ -58,8 +58,6 @@ The admin can edit or delete a user from this page.
                         });
                         
                         
-                       
-                        
                         
         </script>
            
@@ -90,7 +88,8 @@ The admin can edit or delete a user from this page.
                                 <button class ="edit-button" id = "${user.email}" type="button" 
                                         data-toggle="modal" data-target="#editForm">Edit</button>
 
-                     </td>
+                     </td
+                     <%-- Triggers the delete modal --%>
                      <td>
                           <button class ="delete-button" id = "${user.email}" type="button" 
                                         data-toggle="modal" data-target="#deleteForm">Delete</button>
@@ -122,7 +121,7 @@ The admin can edit or delete a user from this page.
                                     <form action="AdminServlet" method="post" class = "form-horizontal" role = "form">
                                   <input  type="hidden" name="formType" value="edit"/>
                                   <input id ="email-field" type ="hidden" name ="email"/>
-                                   <div class="row">
+                                      <div class="row">
                                           <div class="col-md-2">
                                               <label class="control-label">FirstName</label>
                                           </div>
@@ -131,7 +130,7 @@ The admin can edit or delete a user from this page.
                                           </div>
                                       </div>
 
-                                   <div class="row">
+                                      <div class="row">
                                           <div class="col-md-2">
                                               <label class="control-label">Lastname</label>
                                           </div>
@@ -156,8 +155,8 @@ The admin can edit or delete a user from this page.
                                               <input id="password-field" type="password" name="password"/>
                                           </div>
                                       </div>
-                                  <input type ="submit" id="btn"/>
-                                    </form> 
+                                      <input type ="submit" id="btn"/>
+                                  </form> 
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -181,7 +180,7 @@ The admin can edit or delete a user from this page.
 <%-- Admin needs to enter the email address to delete --%>   
                               <p> Are you sure you want to delete this user. Please
                               re-enter their email to confirm.</p>
-                              
+  
                             <form action="AdminServlet" method="post" class = "form-horizontal" role = "form">
                                   <input  type="hidden" name="formType" value="delete"/>
                                    <div class="row">
