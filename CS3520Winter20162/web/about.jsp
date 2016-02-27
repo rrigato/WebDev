@@ -26,7 +26,17 @@ About servlet links to this page
         <%--import header --%>
         <c:import url="Header.jsp"/>
         
-        <h1>Here is some information about me</h1>
+        <h2>About this site</h2>
+            <div class ="explanation">
+                <p>The purpose of this site is to demonstrate how visualizing data
+                can impart ideas easier than the dataset itself. I developed this website
+                as an experiment in storytelling with data. Any feedback about the site
+                and the visualizations created are much appreciated.</p>
+
+            </div>
+        
+        
+        <h3>Here is some information about me</h3>
         <%--External link to GitHub--%>
         <a href ="https://github.com/rrigato">Check out my GitHub account</a>
         
@@ -34,6 +44,9 @@ About servlet links to this page
         <br>
         <a href ="https://www.kaggle.com/ryanrigato">Take a look at my Kaggle Profile </a>
         
+        <br>       
+        <br>
+        <a href ="https://www.linkedin.com/in/ryan-rigato-a9248397">Connect with me on Linkedin </a>
         <c:import url="footer.jsp"/>
     </body>
 </html>

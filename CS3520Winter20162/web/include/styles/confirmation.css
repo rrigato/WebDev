@@ -5,7 +5,7 @@ and open the template in the editor.
 */
 /* 
     Created on : Jan 26, 2016, 8:11:53 PM
-    Author     : Punkiehome1
+    Author     : Ryan Rigato
 */
 body{
 
@@ -56,4 +56,13 @@ footer{
     background-color: hsla(120, 100%, 50%, 0.3);
 }
 
-
+/*
+    places a margin for all explanation blocks at auto
+    such that it is evenly spread across the 
+    width
+*/
+.explanation{
+    width:650px;
+    margin: 0px auto;
+    text-align: left;
+}

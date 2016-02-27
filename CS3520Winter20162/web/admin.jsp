@@ -15,12 +15,6 @@ Depends on the Admin Servlet
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/> 
-        
-        
-        <%-- <script src="include/js/jquery-1.12.0.js"></script>--%>
-       <%-- <script src="include/js/bootstrap.min.js"></script> --%>
-
-
         <title>Administration Page</title>
     </head>
         <%--import header --%>
