@@ -231,6 +231,15 @@ public class DBUtils {
                         
             }//updateUser method            
             
+            
+            /*
+            
+            
+            returns all users in the database 
+            Each element of the list contains a user that has 
+                firstname, lastname, email, username and password
+
+            */
              public static List<User>  getPass(){
                 Connection connection = getConnection();
                 ResultSet rs ;
@@ -287,7 +296,7 @@ public class DBUtils {
                 //returns the userlist to the servlet
                 return users;
 
-            }//getUsers method
+            }//getPass method
             
             
             

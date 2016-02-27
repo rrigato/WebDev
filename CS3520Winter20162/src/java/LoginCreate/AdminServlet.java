@@ -21,6 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * Sets a userlist object to the request scope and
  * forwards control to admin.jsp
+ * 
+ * The adminservlet places a userlist in the request scope 
+ * 
+ * And can be user for formType edit or delete
  */
 public class AdminServlet extends HttpServlet {
 
@@ -38,16 +42,22 @@ public class AdminServlet extends HttpServlet {
         
 
         
+        /*
+            Gets the value of the formType which determines whether the admin
+            wants to edit or delete a user.
         
-        //hard coded values that will be used for dynamic table using jstl tags
-        //Can Change this in the future so that it checks which users are logged in
-        //DBUtils.getUsers();
+        */
           String type  = request.getParameter("formType");
+          /*
+          This if statement is chosen if the admin selected the edit modal
+          If this is the case, a new user object is created and 
+          the firstname, lastname, username, email and password are stored
+          in that object.
+          
+          The user object is then passed to DBUtils, where the changes are
+          updated into the database
+          */
         if(null != type && type.equals("edit")){
-       //     String firstname = request.getParameter("firstname");
-         //        String lastname = request.getParameter("lastname");
-           //             String username = request.getParameter("username");
-             //                  String password = request.getParameter("password");
 
                                User user = new User( );
                                user.setFirstname(request.getParameter("firstname"));
@@ -62,15 +72,20 @@ public class AdminServlet extends HttpServlet {
         
                         
 
-                                                       
+         /*
+        This if statement is if the admin selected the delete modal from the
+        admin page.
+        The admin types in the email of the user he wants to delete, and the 
+        user is taken from the request scope and placed into a new user object
+        
+        This user object is sent to the DBUtils class where the row is deleted 
+        from the database
+        */                                              
         if(null != type && type.equals("delete")){
   
 
                                User user = new User( );
-//                               user.setFirstname(request.getParameter("firstname"));
-//                               user.setLastname(request.getParameter("lastname"));
-//                               user.setUsername(request.getParameter("username"));
-//                               user.setPassword(request.getParameter("password"));
+
                                user.setEmail(request.getParameter("email"));
                                
                                DBUtils.deleteUser(user);
@@ -81,17 +96,6 @@ public class AdminServlet extends HttpServlet {
         List <User> userlist  = DBUtils.getUsers(); 
 
   
-
-
-
-//new ArrayList<User>();
- /*      userlist.add( new User("John", "Smith", "jsmith@gmail.com", "jsmith"));
-        
-        userlist.add( new User("Jane", "Smith", "jane.smith@gmail.com", "jane.smith"));
-        userlist.add(new User("John", "Doe", "jdoe@gmail.com", "jdoe.smith"));
-        userlist.add( new User("Jane", "Doe", "jane.doe@gmail.com", "jane.doe"));
-        
-        userlist.add(new User("ryan", "rigato", "rrigato@gmail.com", "r.rigato"));*/
         
         request.setAttribute("userlist", userlist);
         this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);

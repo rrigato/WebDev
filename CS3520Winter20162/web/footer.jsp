@@ -17,6 +17,10 @@ Footer now contains a users login information
 
     <footer>
 
+            <%--
+                if the sessionScope.user.username is null, the user is not logged
+            in. Otherwise the user is loggedin and their username can be displayed
+            --%>
                 <c:if test="${sessionScope.user.username !=null}">            
                 <p>Login Status: ${sessionScope.user.username == null ? 
                                    'Not logged in':sessionScope.user.username  }</p>

@@ -33,8 +33,8 @@ This header contains the navbar which is accesible at all pages
                 <!-- Menu Items -->
                 <div>
                     <ul class="nav navbar-nav">
-                       
-                        <li><a href="graph1.jsp">HS Graduation </a></li>
+                       <!-- One for menu item-->
+                        <li><a href="graph1.jsp">Grad Rates </a></li>
                         <li><a href="IndexServlet">Login</a></li>
                         
                         <li><a href="AboutServlet">About</a></li>

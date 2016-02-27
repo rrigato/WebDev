@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * Servlet that handles the logic behind logining and creating an account
  * Forwards to either loginAccount.jsp or createAccount.jsp
+ * 
+ * 
  */
 public class LoginCreate extends HttpServlet {
 
@@ -40,21 +42,32 @@ public class LoginCreate extends HttpServlet {
                 String url = "/createAccount.jsp";
 
                 try{
+                    /*
+                    gets the hidden value of the formType,
+                    */
                 String formType = request.getParameter("formType");
+                
+                /*
+                Gets the email and username from the request scope
+                */
                 String email = request.getParameter("email");
-
                 String username = request.getParameter("username");
 
 
+                /*
+                This block executes if the user is trying to login and
+                clicks the submit button for login
+                */
                 if(formType != null && formType.equals("login")){
-                    // handle a login request
-
+                    //gets the password from the request scope
                     String password = request.getParameter("password");
                       
 
                     //do some logic to validate credentials
-
-                    //send to appropriate page
+                    
+                    //checks if the user is an admin in the AuthUtils class
+                    //if they are they are sent to the admin page
+                    
                     if(AuthUtils.isAdmin(username, password)){
                         url = "/AdminServlet";  
                         
