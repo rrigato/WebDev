@@ -77,7 +77,7 @@
                 .attr("cy", function(d){ return d.y - 30; })
                 .style("fill", function(d) { return color(d.value); })
                 .transition()
-                    .duration(100000)
+                    .duration(1000)
                     .attr("cx", function(d){ return d.x + movement(5,5); })
                     .attr("cy", function(d){ return d.y + movement(5,5); });
 
@@ -98,7 +98,7 @@
                     "font-size": "12px"
                 })
                 .transition()
-                    .duration(100000)
+                    .duration(1000)
                     .attr("x", function(d){ return d.x + movement(5,5); })
                     .attr("y", function(d){ return d.y + movement(5,5); });
   
@@ -109,7 +109,33 @@
             
         </script>
         
+        <p>
+            The above graph is a bubble plot made using D3.js. One of the most challenging
+            parts of creating this bubble plot was accurately reflecting the radius as a 
+            function of the data. The problem with simply using the radius to create 
+            the circle is that the formula for the Area = pi*r^2.
+        </p>
         
+        <p>    
+            A simple example involves having separate radius of 2 and 3 demonstrates this problem.
+            The ratio begins at 2:3, or around .66. However the area of the 
+            radius is 2^2 *pi to 3^2 * pi or 4*pi to 9*pi. This ratio is 4:9 or 
+            .44. Thus, the underlying relationship between the data has changed.
+        </p>
+        <p>
+           The way this was corrected using D3 was to take the square root of the
+           radius before appending a circle to the svg element. This solution 
+           was made using taking the square root using a scale.
+            
+            
+        </p>
+        
+        <p>
+            One last interesting point about the development of this
+            visualization is that the color is of each bubble is actually a 
+            linear scale from red to blue. This means that the color will 
+            become more blue as the frequency increases.
+        </p>
         <a href="exampleBubble.jsp">Check the example</anchor>
         
         <a href="histogram.jsp">Check histogram plot</anchor>

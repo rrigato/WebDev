@@ -133,7 +133,34 @@ The source of this data is the China Labor bulletin
 });   
     
         </script>
-    </body>
-    <br>
+            <br>
     <a href ="http://maps.clb.org.hk/strikes/en">Source: China Labor Bulletin</a>
+        <p>
+            Above is a plot of the total number of China Labor Union strikes 
+            across five different years (2011-2015). The four locations that
+            are plotted in the map are Bejing, Chongqing, Guangdong, and
+            Shanghai. This graph was produced using D3.js.
+        </p>
+        
+        <p>
+            One of the interesting things to note about this plot is that the
+            number of labor union strikes has increased across all four 
+            locations.  I wonder if this is because of an actual increase 
+            in the underlying labor tension in China, or because the accuracy
+            of reporting measures has improved over time. 
+        </p>
+        
+        <p>
+            One other interesting observation about this dataset is that
+            Guangdong is so much further out of line when compared to the other
+            locations. Bejing, Chongqing, and Shanghai all have similar
+            numbers of labor union strikes over the years. Guangdong is a
+            factor of over 5 times larger than any of the other locations in
+            any given year. The perfect illustration of this is that 4 of the
+            5 largest number of labor union strikes in the dataset across
+            2011-2015 occurred in Guangdong.
+            
+        </p>
+    </body>
+
 </html>
