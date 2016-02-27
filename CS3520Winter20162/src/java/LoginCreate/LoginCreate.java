@@ -45,12 +45,12 @@ public class LoginCreate extends HttpServlet {
 
                 String username = request.getParameter("username");
 
-                String msg = "Blank!!!";
 
                 if(formType != null && formType.equals("login")){
                     // handle a login request
 
                     String password = request.getParameter("password");
+                      
 
                     //do some logic to validate credentials
 
@@ -65,7 +65,7 @@ public class LoginCreate extends HttpServlet {
                         
                         request.getSession().setAttribute("user", user);
                         url = "/loginAccount.jsp";
-                        request.setAttribute("msg", "Too Bad I haven't set up the database");
+                        request.setAttribute("msg", "Thank you for signing in, take a look at some awesome graphs");
                         
                         
 
@@ -79,6 +79,7 @@ public class LoginCreate extends HttpServlet {
                     String firstname= request.getParameter("firstname");
                     String lastname = request.getParameter("lastname");
                     String password = request.getParameter("password");
+ 
 
                     request.setAttribute("username", username);
                     request.setAttribute("email", email);

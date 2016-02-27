@@ -231,6 +231,68 @@ public class DBUtils {
                         
             }//updateUser method            
             
+             public static List<User>  getPass(){
+                Connection connection = getConnection();
+                ResultSet rs ;
+                rs = null;
+                Statement stmt; 
+                stmt = null;
+                
+                //initializing a list that will be used to return the users
+                List <User> users = new ArrayList<User>();
+                try{
+                   stmt = connection.createStatement();
+                   
+                   //sql query to get the result from
+                     rs = stmt.executeQuery("Select * from User" 
+                    );
+                    //while there is a new row
+                    
+
+                    User user;
+                    
+                    //rs.next() starts at -1 and goes to 0
+                    //will return false when there are no more rows to read
+                    while(rs.next()){
+                        //System.out.println("Name: " + rs.getString("firstname") + " " + rs.getString("lastname"));
+                        //uses the java bean to get the
+                        //rs.attributeName with the name of the column in the string
+                        user = new User(rs.getString("firstname"), rs.getString("lastname"), 
+                                rs.getString("email"), rs.getString("username"),
+                                rs.getString("password"));
+                        //adds each to the userlist
+                        users.add(user);
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
+                }finally{
+                    try{
+                    //if statements prevent closing the database from throwing a null pointer exception
+                    if (rs != null){
+                         rs.close();
+                    }
+
+                    if (stmt != null){
+                        stmt.close();
+                    }
+                    if(connection != null)
+                    {
+                        connection.close();
+                    }
+                    
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }  
+                //returns the userlist to the servlet
+                return users;
+
+            }//getUsers method
+            
+            
+            
+            
+            
             
             
             
