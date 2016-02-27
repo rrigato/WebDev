@@ -44,5 +44,17 @@ public class AuthUtils {
                 }
                    return false;
             }
+        
+        public static boolean isAdmin(String username, String password){
+            
+            List <User> userlist  = DBUtils.getPass(); 
+
+            
+            if (username.equals("admin") ){
+               return searchList(userlist, username, password);
+                
+            }
+            return false;
+        }
     
 }

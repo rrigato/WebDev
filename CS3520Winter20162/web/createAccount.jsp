@@ -25,10 +25,12 @@ Depends on the LoginCreate Java Servlet
     <body>
         <%--import header --%>
         <c:import url="Header.jsp"/>        
-        <h1>${msg}</h1>
+        <h2>${msg}</h2>
         <p>Your created Account Username: ${username}</p>
         <br>
         <p>Your created Account email: ${email}</p>
+        
+
         
         <c:import url="footer.jsp"/>
     </body>

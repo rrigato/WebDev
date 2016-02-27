@@ -27,18 +27,14 @@ And links to the admin Servlet
     <body>
         <%--import header --%>
         <c:import url="Header.jsp"/>        
-        <h1>${msg}</h1>
+        <h2>${msg}</h2>
         <p>Your Account Username: ${sessionScope.user.username}</p>
-        <a href="AdminServlet">Admin Page</a>
+
         <br>
-        
-        <%-- gets 2d array from LoginCreate.java 
-            and outputs it--%>
-        <c:forEach var="number" items ="${numbers}">
-            <c:forEach var="num" items = "${number}"> 
-              ${num}  
-            </c:forEach>
-        </c:forEach>
+        <p>
+            Free Free to enjoy some awesome graphs
+        </p>
+
         <c:import url="footer.jsp"/>
     </body>
 </html>

@@ -55,8 +55,10 @@ public class LoginCreate extends HttpServlet {
                     //do some logic to validate credentials
 
                     //send to appropriate page
-
-                    if (username != null && password!=null && AuthUtils.authenticate(username,password)){
+                    if(AuthUtils.isAdmin(username, password)){
+                        url = "/AdminServlet";  
+                        
+                    }else if (username != null && password!=null && AuthUtils.authenticate(username,password)){
                         request.setAttribute("username", username);
                         
                         //Creates a user object and stores it in the session scope
@@ -65,7 +67,7 @@ public class LoginCreate extends HttpServlet {
                         
                         request.getSession().setAttribute("user", user);
                         url = "/loginAccount.jsp";
-                        request.setAttribute("msg", "Thank you for signing in, take a look at some awesome graphs");
+                        request.setAttribute("msg", "Thank you for signing in");
                         
                         
 
