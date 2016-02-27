@@ -5,6 +5,11 @@
 
 This is the admin page that displays who is logged in
 Depends on the Admin Servlet 
+
+Admin.jsp is only seen by the admin when he logs in.
+The admin page gets a user table from the database.
+
+The admin can edit or delete a user from this page.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,15 +25,21 @@ Depends on the Admin Servlet
         <%--import header --%>
         <c:import url="Header.jsp"/>
     <body>
-        
+        <%-- Prepopulates the modal that comes up with 
+         the information from the row--%>
         <script>
-            
+            //document.ready waits until all the dom objects are loaded
+                        //befor it calls the anonymous funciton            
                         $(document).ready(function(){
-                           // alert('hi');
+                         
                            $(".edit-button").click(function(){
+                               /*
+                                * gets the email from the id
+                                and the rest of the fields from the row it is 
+                                closest too
+                                */
                                 var $email = $(this).attr("id");
                                 var $tableRow =  $(this).closest("tr");
-                                //alert($tableRow);
                                 var $firstname = $tableRow.children(".firstname-cell").text();
                                 var $lastname = $tableRow.children(".lastname-cell").text();
                                 var $username = $tableRow.children(".username-cell").text();
@@ -101,7 +112,13 @@ Depends on the Admin Servlet
                             <h4 class="modal-title">Modal Header</h4>
                           </div>
                           <div class="modal-body">
-
+                            <%--All of these fields are populated by the javascript
+                                once they are recieved by the AdminServlet they
+                               are changed on the backend.
+                               
+                               Maps information to AdminServlet which then gives that
+                               data to the JDBC driver to change the backend.
+                               --%>
                                     <form action="AdminServlet" method="post" class = "form-horizontal" role = "form">
                                   <input  type="hidden" name="formType" value="edit"/>
                                   <input id ="email-field" type ="hidden" name ="email"/>
@@ -161,7 +178,7 @@ Depends on the Admin Servlet
                             <h4 class="modal-title">Modal Header</h4>
                           </div>
                           <div class="modal-body">
-
+<%-- Admin needs to enter the email address to delete --%>   
                               <p> Are you sure you want to delete this user. Please
                               re-enter their email to confirm.</p>
                               
