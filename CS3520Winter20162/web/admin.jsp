@@ -88,7 +88,7 @@ The admin can edit or delete a user from this page.
                                 <button class ="edit-button" id = "${user.email}" type="button" 
                                         data-toggle="modal" data-target="#editForm">Edit</button>
 
-                     </td
+                     </td>
                      <%-- Triggers the delete modal --%>
                      <td>
                           <button class ="delete-button" id = "${user.email}" type="button" 
