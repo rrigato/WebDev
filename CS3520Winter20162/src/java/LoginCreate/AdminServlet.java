@@ -2,6 +2,10 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+
+ * The adminservlet places a userlist in the request scope 
+  * 
+ * And can be user for formType edit or delete
  */
 package LoginCreate;
 
@@ -39,15 +43,23 @@ public class AdminServlet extends HttpServlet {
 
         
         
-        //hard coded values that will be used for dynamic table using jstl tags
-        //Can Change this in the future so that it checks which users are logged in
-        //DBUtils.getUsers();
+        /*
+             Gets the value of the formType which determines whether the admin
+           wants to edit or delete a user.
+        */
           String type  = request.getParameter("formType");
+          
+          /*
+           This if statement is chosen if the admin selected the edit modal
+           If this is the case, a new user object is created and 
+           the firstname, lastname, username, email and password are stored
+           in that object.
+           
+           The user object is then passed to DBUtils, where the changes are
+           updated into the database
+           */
         if(null != type && type.equals("edit")){
-       //     String firstname = request.getParameter("firstname");
-         //        String lastname = request.getParameter("lastname");
-           //             String username = request.getParameter("username");
-             //                  String password = request.getParameter("password");
+
 
                                User user = new User( );
                                user.setFirstname(request.getParameter("firstname"));
@@ -62,15 +74,22 @@ public class AdminServlet extends HttpServlet {
         
                         
 
+        
+          /*
+         This if statement is if the admin selected the delete modal from the
+         admin page.
+         The admin types in the email of the user he wants to delete, and the 
+         user is taken from the request scope and placed into a new user object
+         
+         This user object is sent to the DBUtils class where the row is deleted 
+         from the database
+         */ 
                                                        
         if(null != type && type.equals("delete")){
   
 
                                User user = new User( );
-//                               user.setFirstname(request.getParameter("firstname"));
-//                               user.setLastname(request.getParameter("lastname"));
-//                               user.setUsername(request.getParameter("username"));
-//                               user.setPassword(request.getParameter("password"));
+
                                user.setEmail(request.getParameter("email"));
                                
                                DBUtils.deleteUser(user);
