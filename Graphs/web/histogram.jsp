@@ -41,7 +41,7 @@
     <body>
 
 <body>
-
+    <h1>High School Graduation Rate</h1>
 <script>
 
     //initializes the width and height of the svg in addition to margins
@@ -104,13 +104,7 @@
      //appends the y axis 
       svg.append("g")
           .attr("class", "y axis")
-          .call(yAxis)
-          .append("text")
-              .attr("transform", "rotate(-90)")
-              .attr("y", 6)
-              .attr("dy", ".71em")
-              .style("text-anchor", "end")
-              .text("Frequency");
+          .call(yAxis);
 
 
       //appends the bars for the histogram
@@ -126,7 +120,20 @@
               .attr("width", x.rangeBand())
               .attr("y", function(d) { return y(d.Percent); })
               .attr("height", function(d) { return height - y(d.Percent); })
-              .style({"fill": function(data,i){return colors(i);}, 'stroke': '#31708f', 'stroke-width': '5'});
+              .style({"fill": function(data,i){return colors(i);}, 'stroke': '#31708f', 'stroke-width': '5'})
+                ;
+                
+                
+                svg.selectAll(".bartext")
+                        .data(data)
+                        .enter().append("text")
+                            .attr("class", "bartext")
+                            .attr("y", function(d){  return height  -300;})
+                            .attr("text-anchor","right")
+                            .attr("x", function(d,i){ return  40 + (x.rangeBand()/5)*i * 6 ;})
+                            .attr("fill", "black")
+                            .text(function(d){return d.Percent * 100 + "%";});
+             
     });
 
 
@@ -137,5 +144,24 @@
     }
 
 </script>
+
+    <a href ="https://twitter.com/WhiteHouse/status/558318033639198720">Source: US department of Education </a>
+
+    <p>
+        The above graph demonstrates the High School graduation rate in the United 
+        States from 2007 until 2012. The graph was produced using the 
+        javascript library D3, in addition to adding a few styling elements using CSS. 
+        The y axis represents the percentage of students graduating in a single 
+        year, while the x axis represents time.
+    </p>
+    
+    <p>
+        The above graph is interesting because it represents the time
+        immediately before and during the most the recent recession. 
+        It is clear that the trend for the high school graduation rate is 
+        upward, however, it is interesting to consider whether this is because
+        of a change in education policy or because more people wanted to stay
+        in school and graduate due to the poor economy.
+    </p>
     </body>
 </html>
