@@ -14,7 +14,7 @@ for 2/16 until 2/23
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
+         <script src="http://d3js.org/d3.v3.js"></script>
             <style>
       rect.bordered {
         stroke: #E6E6E6;
@@ -36,7 +36,7 @@ for 2/16 until 2/23
       }
     </style>
     
-        <script src="http://d3js.org/d3.v3.js"></script>
+       
 
     </head>
     <body>
