@@ -41,7 +41,7 @@ body {
         
         <script>
                 var marginTop = 30, marginBottom = 30,
-                    marginLeft = 35, marginRight = 35,
+                    marginLeft = 35, marginRight = 75,
                     width = 960 - marginLeft - marginRight,
                     height = 500 - marginTop - marginBottom ;     
             
@@ -69,7 +69,7 @@ body {
             var line = d3.svg.line()
                     .interpolate("basis")
                     .x(function(d){ return x(d.date);})
-                    .y(function(d){ return y(d.temperature);});
+                    .y(function(d){ return y(d.rank);});
             
             //Creating SVG element
             var svg = d3.select("body").append("svg")
@@ -79,7 +79,7 @@ body {
                         .attr("transform", "translate(" + marginLeft + "," + marginTop + ")");
                 
             
-            d3.csv("Data/chinaStrike2.csv", function(error,data){
+            d3.csv("Data/kaggleUsers2.csv", function(error,data){
                 if (error) throw error;
                 
                 //Making the color a function of the different ranking variables
@@ -97,7 +97,7 @@ body {
     return {
       name: name,
       values: data.map(function(d) {
-        return {date: d.date, temperature: +d[name]};
+        return {date: d.date, rank: +d[name]};
       })
     };
   });
@@ -109,8 +109,8 @@ body {
                 //function of the cities object literal
                 //c and v are just placeholders for the data from the cities object
                 y.domain([
-                    d3.min(cities, function(c){ return d3.min(c.values, function(v){ return v.temperature ;}) ;}),
-                    d3.max(cities, function(c){return  d3.max(c.values, function(v){ return v.temperature ;}) ;})
+                    d3.min(cities, function(c){ return d3.min(c.values, function(v){ return v.rank ;}) ;}),
+                    d3.max(cities, function(c){return  d3.max(c.values, function(v){ return v.rank ;}) ;})
                     
                 ]);
                 
@@ -132,21 +132,27 @@ body {
                             .style("text-anchor", "end")
                             .text("Labor Union Strikes");
                     
+                    
+                    //select all previous svg elements and appends the city 
+                    //which will be added.
                     var city = svg.selectAll(".city")
                             .data(cities)
                             .enter().append("g")
                                 .attr("class", city);
                     
+                    //This is the actual line
                     city.append("path")
                             .attr("class", "line")
                             .attr("d", function(d){ return line(d.values);})
                             .style("stroke", function(d){return color(d.name) ;});
                     
+                    
+                    //This function appends the text to each line
                     city.append("text")
                             .datum(function(d){ return {name:d.name, value: d.values[d.values.length -1]}  ;})
-                            .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
-                            .attr("x", 4)
-                            .attr("dy", ".35em")
+                            .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.rank) + ")"; })
+                            .attr("x", 2)
+                            .attr("dy", ".70em")
                             .text(function(d) {  return d.name ;});
             });
         
