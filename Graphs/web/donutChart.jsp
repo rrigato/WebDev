@@ -1,7 +1,7 @@
 <%-- 
     Document   : donutChart
     Created on : Mar 1, 2016, 7:31:17 PM
-    Author     : Randy
+    Author     : Ryan Rigato
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
