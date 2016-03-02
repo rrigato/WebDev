@@ -13,18 +13,20 @@
         <script src="//d3js.org/d3.v3.min.js"></script>
     </head>
     <body>
-        <h2> Plot of A versus B </h2>
+        <h2> Number of Pokemon Games Sold by Title</h2>
         <script>
             
-                var width = 1000,
-                   height  = 1000,
+                var width = 1250,
+                   height  = 1200,
                    format = d3.format(",d"),
                    color = d3.scale.category20b(); 
-
+               
+               //choosing the correct padding is crucial because the game titles 
+               //are so long they are over the top of each other
                var bubble = d3.layout.pack()
                    .sort(null)
                    .size([width, height])
-                   .padding(1.5);
+                   .padding(80);
 
                var svg = d3.select("body")
                    .append("svg")
@@ -32,13 +34,19 @@
                    .attr("height", height)
                    .attr("class", "bubble");
            
+               //adding some random movement
                 var movement = d3.random.normal();
         
                 
+                //colors of the bubbles will be inside this color scale depending on 
+                //the number of games sold
                 var color = d3.scale.linear()
                     .domain([0,50])
                     .range(["red", "blue"]);
                     
+                    
+                //Takes the square root so the area is reflective of the underlying
+                //relationship between the amount of video games
                 var size = d3.scale.sqrt()
                         .domain([0,35])
                         .range([0,35]);
@@ -54,7 +62,7 @@
             //bubbles needs very specific format, convert data to this.
             var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
             
-            console.log(nodes);
+
             
 
 
@@ -66,7 +74,6 @@
                 .data(nodes)
                 .enter();
 
-                console.log(bubbles);
             //create the bubbles
             //need to take the squareroot from the size scale,
             //cause the area is pi*r^2
@@ -89,7 +96,7 @@
             //Adds the name of each text
             bubbles.append("text")
                 .attr("x", function(d){ return d.x ; })
-                .attr("y", function(d){ return d.y - 30  ; })
+                .attr("y", function(d){ return d.y - 32  ; })
                 .attr("text-anchor", "middle")
                 .text(function(d){return (d.Name + ": " + (d.value));})
                 .style({
