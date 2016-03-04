@@ -125,8 +125,8 @@ The source of this data is the China Labor bulletin
 
                    //Append the text to the legend
                    legend.append("text")
-                           .attr("x", width - 20)
-                           .attr("y", 15)
+                           .attr("x", width - 25)
+                           .attr("y", 8)
                            .attr("dy", ".35em")
                            .style("text-anchor", "end")
                            .text(function(d){return d;});

@@ -18,7 +18,7 @@
                 }
 
                 .bar:hover {
-                  fill: brown;
+                  fill: black;
                 }
 
                 .axis {
@@ -145,7 +145,7 @@
 
 </script>
 
-    <a href ="https://twitter.com/WhiteHouse/status/558318033639198720">Source: US department of Education </a>
+
 
     <p>
         The above graph demonstrates the High School graduation rate in the United 
@@ -159,9 +159,11 @@
         The above graph is interesting because it represents the time
         immediately before and during the most the recent recession. 
         It is clear that the trend for the high school graduation rate is 
-        upward, however, it is interesting to consider whether this is because
+        upward. However, it is interesting to consider whether this is because
         of a change in education policy or because more people wanted to stay
         in school and graduate due to the poor economy.
     </p>
     </body>
+    
+        <a href ="https://twitter.com/WhiteHouse/status/558318033639198720">Source: US department of Education </a>
 </html>

@@ -36,6 +36,8 @@ body {
 
 </style>
     <body>
+        
+        <h2>Number of Bleach, Naruto and One Piece Manga Volumes Sold</h2>
         <script>
                    var marginTop = 30, marginBottom = 30,
         marginLeft = 35, marginRight = 35,
@@ -51,7 +53,7 @@ body {
             .rangeRound([height, 0]);
     
         var color = d3.scale.ordinal()
-        .range(["#98abc5",  "#a05d56",  "#ff8c00"]);
+        .range(["rgb(204, 51, 0)",  "rgb(0, 204, 0)",  "rgb(255, 0, 255)"]);
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -104,7 +106,7 @@ body {
                         .attr("y", 10)
                         .attr("dy", ".71em")
                         .style("text-anchor", "end")
-                        .text("Population");
+                        .text("Volumes Sold");
                 
            var volume = svg.selectAll(".volume")
                    .data(data)
@@ -141,8 +143,8 @@ body {
 
                //Append the text to the legend
                legend.append("text")
-                       .attr("x", width - 20)
-                       .attr("y", 15)
+                       .attr("x", width - 22)
+                       .attr("y", 7)
                        .attr("dy", ".35em")
                        .style("text-anchor", "end")
                        .text(function(d){return d;});
@@ -155,6 +157,25 @@ body {
 
         </script>
     </body>
+    <p>
+        Manga is the Japanese popular culture equivalent of comic books and is an art form that has
+        been around since the late 19th century. The main difference between Manga 
+        and American style comic books is that the former typically is drawn using 
+        only black and white.
+    </p>
+    
+    <p>
+        Although Manga is most popular in Japan, many of the most popular series are
+        translated into other languages and distributed across the world. One of 
+        the most popular Manga genres is Shonen, of which Bleach, Naruto and 
+        One Piece are three of the most popular series.
+    </p>
+    <p>
+        While individual chapters are distributed in a weekly magazine, a volume 
+        (called a Tankobon) of these chapters are also sold. The above graph compares
+        the sales of Volumes 55 through Volume 64 for Bleach, Naruto and One Piece in
+        the form of a stacked bar chart.
+    </p>
     
    <a href ="http://www.animenewsnetwork.com/news/2015-01-02/top-selling-manga-in-japan-by-volume-2014/.82827">Source: ANN</a>
 
