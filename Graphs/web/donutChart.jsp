@@ -25,11 +25,7 @@
 
 </style>
     <body>
-        <%--
-        <form>
-             <label><input type="radio" name="dataset" value="mario" checked> Mario</label>
-             <label><input type="radio" name="dataset" value="sports"> Sports</label>
-        </form>--%>
+        <h2>Chart Mario Video Game Sales by Genre </h2>
         <script>
             var marginTop = 30, marginBottom = 30,
                     marginLeft = 35, marginRight = 30,
@@ -39,7 +35,8 @@
             var radius = Math.min(width,height) / 2;
             
             var color = d3.scale.ordinal()
-                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+                .range(["rgb(255, 135, 0)", "rgb(0, 135, 0)", "rgb(0, 255, 239)",
+                "rgb(245, 178, 239)", "#a05d56", "rgb(245, 178, 70)", "rgb(57, 217, 42)"]);
 
             
             //Determining the inner and outer radius for the arc
@@ -75,22 +72,49 @@
                         .style("fill", function(d){return color(d.data.Game);});
                 
                 
+                //Return the text of what type of Mario Game it is
                 g.append("text")
                         .attr("transform", function(d){ 
                              return "translate(" + arc.centroid(d) + ")";})
                          .attr("dy", "1em")
-                         .text(function(d) { return d.data.Game});
+                         .text(function(d) { return d.data.Game;})
+                         .style({"font-size": "12px" });
 
                     
                 
             });
             
             
+            //have to convert the Sales Data from a string to a float
             function type(d){
                 d.Sales = parseFloat(d.Sales);
                 return d;
             }
         </script>
+        
+        <p>
+            Mario was created by Shigeru Miyamoto and made his first appearance 
+            in the 1981 arcade game Donkey Kong. Since then, the Mario franchise 
+            has evolved to have installments on both console and handheld platforms.
+            The iconic plumber has made a major impact on American Popular Culture 
+            and how platforming video games are played.
+        </p>
+        
+        <p>
+            The above graph is a donut chart developed using D3.js. One of my
+            favorite parts about making this particular visualization was choosing
+            the colors to represent each individual genre of the video game. It 
+            was an interesting balancing act between my preference for vivid colors 
+            and actually being able to convey the data in way that is easy for the
+            reader to understand.
+        </p>
+        
+        <p>
+            If I could only choose one video game from the Mario franchise, I 
+            would choose Super Mario Galaxy. Although it is rare for me to 
+            play a Mario game that I dislike, my least favorite Mario games would be 
+            the Mario Party series.
+        </p>
         
         
         <a href ="http://vgsales.wikia.com/wiki/Best_selling_game_franchises">Source: Wikia</a>

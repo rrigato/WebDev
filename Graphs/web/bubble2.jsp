@@ -41,7 +41,7 @@
                 //colors of the bubbles will be inside this color scale depending on 
                 //the number of games sold
                 var color = d3.scale.linear()
-                    .domain([0,50])
+                    .domain([0,32])
                     .range(["red", "blue"]);
                     
                     
@@ -84,7 +84,7 @@
                 .attr("cy", function(d){ return d.y - 30; })
                 .style("fill", function(d) { return color(d.value); })
                 .transition()
-                    .duration(1000)
+                    .duration(2000)
                     .attr("cx", function(d){ return d.x + movement(5,5); })
                     .attr("cy", function(d){ return d.y + movement(5,5); });
 
@@ -102,10 +102,10 @@
                 .style({
                     "fill":"black", 
                     "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-                    "font-size": "12px"
+                    "font-size": "11px"
                 })
                 .transition()
-                    .duration(1000)
+                    .duration(2000)
                     .attr("x", function(d){ return d.x + movement(5,5); })
 
   
@@ -114,7 +114,12 @@
             
             
         </script>
-        
+        <p>
+            The first Pokemon game was released on February 27, 1996. Since then,
+            the franchise has released over 30 video games, a trading card game,
+            and a television series. The above graph demonstrates each Pokemon 
+            video game sales in millions of copies sold.
+        </p>
         <p>
             The above graph is a bubble plot made using D3.js. One of the most challenging
             parts of creating this bubble plot was accurately reflecting the radius as a 
@@ -123,15 +128,15 @@
         </p>
         
         <p>    
-            A simple example involves having separate radius of 2 and 3 demonstrates this problem.
+            A simple example of having separate radius of 2 and 3 demonstrates this problem.
             The ratio begins at 2:3, or around .66. However the area of the 
-            radius is 2^2 *pi to 3^2 * pi or 4*pi to 9*pi. This ratio is 4:9 or 
+            circle is 2^2 *pi to 3^2 * pi or 4*pi to 9*pi. This ratio is 4:9 or 
             .44. Thus, the underlying relationship between the data has changed.
         </p>
         <p>
            The way this was corrected using D3 was to take the square root of the
            radius before appending a circle to the svg element. This solution 
-           was made using taking the square root using a scale.
+           was made by taking the square root using a scale.
             
             
         </p>
