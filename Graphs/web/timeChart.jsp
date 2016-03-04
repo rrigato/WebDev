@@ -41,16 +41,16 @@ body {
         
         <script>
                 var marginTop = 30, marginBottom = 30,
-                    marginLeft = 35, marginRight = 75,
-                    width = 960 - marginLeft - marginRight,
-                    height = 500 - marginTop - marginBottom ;     
+                    marginLeft = 50, marginRight = 75,
+                    width = 1050 - marginLeft - marginRight,
+                    height = 600 - marginTop - marginBottom ;     
             
             var parseDate = d3.time.format("%m/%d/%Y").parse;
             
             var x = d3.time.scale()
                     .range([0,width]);
             var y = d3.scale.linear()
-                    .range([height,0]);
+                    .range([height-50,0]);
             
             var color = d3.scale.category10();
             
@@ -79,7 +79,7 @@ body {
                         .attr("transform", "translate(" + marginLeft + "," + marginTop + ")");
                 
             
-            d3.csv("Data/kaggleUsers2.csv", function(error,data){
+            d3.csv("Data/kaggleUsers3.csv", function(error,data){
                 if (error) throw error;
                 
                 //Making the color a function of the different ranking variables
@@ -130,7 +130,7 @@ body {
                             .attr("y", 8)
                             .attr("dy", ".71em")
                             .style("text-anchor", "end")
-                            .text("Labor Union Strikes");
+                            .text("Amount");
                     
                     
                     //select all previous svg elements and appends the city 
