@@ -35,7 +35,8 @@ The source of this data is the China Labor bulletin
             .range([height, 0]);
 
         var color = d3.scale.ordinal()
-            .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+            .range(["rgb(0, 135, 0)", "rgb(0, 255, 239)",
+                "rgb(245, 178, 239)", "#a05d56", "rgb(245, 178, 70)"]);
 
         var xAxis = d3.svg.axis()
             .scale(x0)
@@ -52,89 +53,89 @@ The source of this data is the China Labor bulletin
             .append("g")
               .attr("transform", "translate(" + marginLeft + "," + marginTop + ")");
 
- d3.csv("Data/chinaLaborStrike.csv", function(error, data) {
-            if (error) throw error;
+        d3.csv("Data/chinaLaborStrike.csv", function(error, data) {
+                if (error) throw error;
 
-            //Makes a key of the years for which I have strike data
-            var yearsUsed = d3.keys(data[0])
-                    .filter(function(key){return key !== "Location";});
-  
-            data.forEach(
-                    function(d){
-                                d.years = yearsUsed.map(function(name){return {name: name, value: +d[name]}; });
-                               }
-                );
-        
-            //Filling in the domain with hte data
-            x0.domain(data.map(function(d){return d.Location;}));
-            x1.domain(yearsUsed).rangeRoundBands([0,x0.rangeBand()]);
-            y.domain([0,d3.max(data,function(d){return d3.max(d.years, 
-                    function(d){return d.value;} );})]);
-            
-            //Appending the svg element for the xAxis
-            svg.append("g")
-                    .attr("class", "x axis")
-                    .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
-            
-            //Appending the svg element for the yAxis            
-            svg.append("g")
-                    .attr("class", "y axis")
-                    .call(yAxis)
-                    .append("text")
-                        .attr("transform", "rotate(-90)")
-                        .attr("y", 6)
-                        .attr("dy", ".71em")
-                        .style("text-anchor", "end")
-                        .text("Number of Labor Strikes");
-                
-                //Appending the data to the svg element
-                var location = svg.selectAll(".location")
-                        .data(data)
-                        .enter().append("g")
-                            .attr("class", "location")
-                            .attr("transform", function(d) {return "translate(" + x0(d.Location) + ",0)";});
+                //Makes a key of the years for which I have strike data
+                var yearsUsed = d3.keys(data[0])
+                        .filter(function(key){return key !== "Location";});
 
-                //Adding the bars for the group barchart
-                location.selectAll("rect")
-                        .data(function(d){return d.years;})
-                        .enter().append("rect")
-                            .attr("width", x1.rangeBand())
-                            .attr("x", function(d) {return x1(d.name);})
-                            .attr("y", function(d){return y(d.value);})
-                            .attr("height", function(d){return height - y(d.value);})
-                            .style("fill", function(d){return color(d.name);});
-                  
+                data.forEach(
+                        function(d){
+                                    d.years = yearsUsed.map(function(name){return {name: name, value: +d[name]}; });
+                                   }
+                    );
 
-               //Appending an svg element to be used for a legend
-               //that will say which years correspond to which color of the bar
-               var legend = svg.selectAll(".legend")
-                       .data(yearsUsed)
-                       .enter().append("g")
-                           .attr("class", "legend")
-                           .attr("transform", function(d,i) {return "translate(0," + i*15 + ")";});
-               
-               
-               //Append the bars for the legend
-               legend.append("rect")
-                       .attr("x", width -20)
-                       .attr("width", 20)
-                       .attr("height", 20)
-                       .style("fill", color);
+                //Filling in the domain with hte data
+                x0.domain(data.map(function(d){return d.Location;}));
+                x1.domain(yearsUsed).rangeRoundBands([0,x0.rangeBand()]);
+                y.domain([0,d3.max(data,function(d){return d3.max(d.years, 
+                        function(d){return d.value;} );})]);
 
-               //Append the text to the legend
-               legend.append("text")
-                       .attr("x", width - 20)
-                       .attr("y", 15)
-                       .attr("dy", ".35em")
-                       .style("text-anchor", "end")
-                       .text(function(d){return d;});
+                //Appending the svg element for the xAxis
+                svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis);
+
+                //Appending the svg element for the yAxis            
+                svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                        .append("text")
+                            .attr("transform", "rotate(-90)")
+                            .attr("y", 6)
+                            .attr("dy", ".71em")
+                            .style("text-anchor", "end")
+                            .text("Number of Labor Strikes");
+
+                    //Appending the data to the svg element
+                    var location = svg.selectAll(".location")
+                            .data(data)
+                            .enter().append("g")
+                                .attr("class", "location")
+                                .attr("transform", function(d) {return "translate(" + x0(d.Location) + ",0)";});
+
+                    //Adding the bars for the group barchart
+                    location.selectAll("rect")
+                            .data(function(d){return d.years;})
+                            .enter().append("rect")
+                                .attr("width", x1.rangeBand())
+                                .attr("x", function(d) {return x1(d.name);})
+                                .attr("y", function(d){return y(d.value);})
+                                .attr("height", function(d){return height - y(d.value);})
+                                .style("fill", function(d){return color(d.name);});
+
+
+                   //Appending an svg element to be used for a legend
+                   //that will say which years correspond to which color of the bar
+                   var legend = svg.selectAll(".legend")
+                           .data(yearsUsed)
+                           .enter().append("g")
+                               .attr("class", "legend")
+                               .attr("transform", function(d,i) {return "translate(0," + i*15 + ")";});
+
+
+                   //Append the bars for the legend
+                   legend.append("rect")
+                           .attr("x", width -20)
+                           .attr("width", 20)
+                           .attr("height", 20)
+                           .style("fill", color);
+
+                   //Append the text to the legend
+                   legend.append("text")
+                           .attr("x", width - 20)
+                           .attr("y", 15)
+                           .attr("dy", ".35em")
+                           .style("text-anchor", "end")
+                           .text(function(d){return d;});
 
 });   
     
         </script>
             <br>
-    <a href ="http://maps.clb.org.hk/strikes/en">Source: China Labor Bulletin</a>
+
         <p>
             Above is a plot of the total number of China Labor Union strikes 
             across five different years (2011-2015). The four locations that
@@ -161,6 +162,9 @@ The source of this data is the China Labor bulletin
             2011-2015 occurred in Guangdong.
             
         </p>
+        
+        
+        <a href ="http://maps.clb.org.hk/strikes/en">Source: China Labor Bulletin</a>    
     </body>
 
 </html>

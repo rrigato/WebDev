@@ -49,13 +49,15 @@ for 2/16 until 2/23
             var marginTop = 30, marginBottom = 30,
                 marginLeft = 35, marginRight = 35,
                 width = 960 - marginLeft - marginRight,
-                height = 500 - marginTop - marginBottom ;
+                height = 525 - marginTop - marginBottom ;
             
             
             var gridSize = Math.floor(width/24),
                     buckets = 9,
                     legendWidth = gridSize * 2,
-                     colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"];
+                     colors = ["rgb(255, 255, 102)","rgb(204, 255, 153)",
+                        "rgb(255,255,217)","rgb(237,248,177)","rgb(127,205,187)",
+                        "rgb(0, 255, 239)","rgb(29,145,192)","rgb(34,94,168)","rgb(153, 0, 204)"];
             
             //variables for the days and times
             var   days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
@@ -92,12 +94,13 @@ for 2/16 until 2/23
                             .attr("class", function(d,i){  return ((i >=7 && i <= 16)? "timeLabel mono axis axis-worktime" : "timeLabel mono axis");  });
                
             //actual heatMap
+            //Passed in the CSV of data from google Trends
             var heatMap = function(dataLocation){
                     d3.csv(dataLocation, function (d){
                         return {
-                            day: +d.Day,
-                            hour: +d.Hour,
-                            number: +d.Number 
+                            day: parseInt(d.Day),
+                            hour: parseInt(d.Hour),
+                            number: parseInt(d.Number) 
                         };
                     },
                     function(error,data){
@@ -126,7 +129,7 @@ for 2/16 until 2/23
                         
                         
                         //Fills the tile with a color based on the value of the google trend
-                        tiles.transition().duration(1000)
+                        tiles.transition().duration(2000)
                                 .style("fill", function (d) {return colorScale(d.number);});
                         
                         tiles.select("title")
@@ -166,14 +169,41 @@ for 2/16 until 2/23
                     
                 };
                 
-                heatMap("Data/batmanSuperman.csv");
-                
-
+                heatMap("Data/batmanSuperman2.csv");
         </script>
+        <p>
+            The important thing to remember when looking at the heat map is that 
+            darker colors represent more people searching for the phrase "Batman 
+            versus SuperMan."
+        </p>
+        <p>
+            Batman and Superman are two of the most popular superheros in the 
+            comic book world. The impact of these two pop culture giants goes 
+            well beyond the world of comic books as they have both spawned 
+            multiple movie franchises.
+        </p>
+        
+        <p>
+            While the Man of Steel and the World's Greatest Detective both 
+            fight on the side of justice, fans have always fiercely debated who
+            would win in a head to head fight. The above heat map demonstrates 
+            the intensity of these arguments for different times of the day.
+        </p>
+        
+        <p>
+            The heat map was made using D3.js. Google trends search data for 
+            February 16 until February 23 was used to track "Batman versus Superman."
+        </p>
+        <p>
+            My personal favorite of the various iterations of the Batman film series
+            would have to be The Dark Knight Triology. Christian Bale does a fabulous
+            job portraying what Bruce Wayne should be on the silver screen.
+        </p>
         
         
+           <a href ="https://www.google.com/trends/explore#q=Batman%20versus%20Superman&date=now%207-d&cmpt=q&tz=Etc%2FGMT%2B8">
+                Source: Google Trends Data
+           </a> 
     </body>
-    <a href ="https://www.google.com/trends/explore#q=Batman%20versus%20Superman&date=now%207-d&cmpt=q&tz=Etc%2FGMT%2B8">
-        Source: Google Trends Data
-    </a>
+
 </html>
