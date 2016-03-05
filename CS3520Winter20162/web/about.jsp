@@ -31,7 +31,8 @@ About servlet links to this page
                 <p>The purpose of this site is to demonstrate how visualizing data
                 can impart ideas easier than the dataset itself. I developed this website
                 as an experiment in storytelling with data. Any feedback about the site
-                and the visualizations created are much appreciated.</p>
+                and the visualizations created is much appreciated.</p>
+                
 
             </div>
         

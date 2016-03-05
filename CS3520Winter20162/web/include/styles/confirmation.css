@@ -62,7 +62,7 @@ footer{
     width
 */
 .explanation{
-    width:650px;
+    width:700px;
     margin: 0px auto;
     text-align: left;
 }
@@ -72,4 +72,6 @@ footer{
 margin{
     background-color: pink;
 }
+
+
 
