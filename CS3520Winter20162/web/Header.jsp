@@ -37,6 +37,7 @@ This header contains the navbar which is accesible at all pages
                         <li><a href="graph1.jsp">Grad Rates </a></li>
                         <li><a href="graph2.jsp">Pokemon</a></li>
                         <li><a href="graph3.jsp">China Strikes</a></li>
+                        <li><a href="graph4.jsp">Batman vs Superman</a></li>
                         <li><a href="IndexServlet">Login</a></li>
                         
                         <li><a href="AboutServlet">About</a></li>
