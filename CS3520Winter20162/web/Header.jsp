@@ -35,9 +35,10 @@ This header contains the navbar which is accesible at all pages
                     <ul class="nav navbar-nav">
                        <!-- One for menu item-->
                         <li><a href="graph1.jsp">Grad Rates </a></li>
-                        <li><a href="graph2.jsp">Pokemon</a></li>
+                        <li><a href="graph2.jsp">Pokemon Video Game</a></li>
                         <li><a href="graph3.jsp">China Strikes</a></li>
                         <li><a href="graph4.jsp">Batman vs Superman</a></li>
+                        <li><a href="graph5.jsp">Manga Sales</a></li>
                         <li><a href="IndexServlet">Login</a></li>
                         
                         <li><a href="AboutServlet">About</a></li>
