@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/> 
         <link rel="stylesheet" href="include/styles/graph4.css" type="text/css"/> 
         <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>        
-        <title>Ryan Rigato</title>
+        <title>Batman Versus Superman</title>
         <script src="//d3js.org/d3.v3.min.js"></script>
     </head>
 
