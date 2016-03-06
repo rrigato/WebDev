@@ -13,7 +13,7 @@
         <script src="include/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/> 
         <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/> 
-
+        <link rel="stylesheet" href="include/styles/graph3.css" type="text/css"/> 
         <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>        
         <title>Ryan Rigato</title>
         <script src="//d3js.org/d3.v3.min.js"></script>
