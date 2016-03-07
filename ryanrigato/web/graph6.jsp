@@ -149,7 +149,7 @@
             </p>
             
             <p>
-                Once a Kaggle Competition is completed, a user recieves a certain
+                Once a Kaggle competition is completed, a user recieves a certain
                 number of points. Each user is then ranked by the number of points 
                 they have received in all the competitions they have competed in.
                 The Highest Rank is the best ranking that a Kaggle user has 
@@ -161,8 +161,8 @@
                 compared to the first registration date. The interesting takeaway 
                 from the above graph is that when a user first registers does
                 not dramatically impact their points or current ranking. It does 
-                have a slight impact on highest rank, because earlier users to register
-                typically have a higher rank.
+                have a slight impact on Highest Rank, because the earlier a user
+                registers the better their Highest Rank.
             </p>
             
             
