@@ -21,6 +21,7 @@
 
     <c:import url="Header.jsp"/>    
     <body>
+        <h2>Kaggle Users Points, Ranking and Highest Rank by Creation Date</h2>
        <script>
                 var marginTop = 30, marginBottom = 30,
                     marginLeft = 60, marginRight = 85,
@@ -139,6 +140,34 @@
             });
         
         </script>
+        <div class ="explanation">
+            <p>
+                Kaggle is a website where users can compete in order to predict
+                the future with data. The goal of kaggle is to learn about the 
+                entire machine learning process. This includes everything from 
+                cleaning the data to model creation and testing.
+            </p>
+            
+            <p>
+                Once a Kaggle Competition is completed, a user recieves a certain
+                number of points. Each user is then ranked by the number of points 
+                they have received in all the competitions they have competed in.
+                The Highest Rank is the best ranking that a Kaggle user has 
+                ever had.
+            </p>
+                
+            <p>
+                The above graph demonstrates points, ranking, and highest rank 
+                compared to the first registration date. The interesting takeaway 
+                from the above graph is that when a user first registers does
+                not dramatically impact their points or current ranking. It does 
+                have a slight impact on highest rank, because earlier users to register
+                typically have a higher rank.
+            </p>
+            
+            
+            <a href ="https://www.kaggle.com/kaggle/meta-kaggle">Source: Kaggle</a>
+        </div>
     </body>
     <c:import url="footer.jsp"/> 
 </html>

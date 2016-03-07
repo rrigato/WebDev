@@ -23,6 +23,7 @@
     <c:import url="Header.jsp"/>   
  
     <body>
+        <h2>High School Graduation Rate in United States 2007-2012</h2>
         <script>
 
         //initializes the width and height of the svg in addition to margins
