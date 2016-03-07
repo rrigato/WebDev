@@ -1,0 +1,77 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 26, 2016, 8:11:53 PM
+    Author     : Ryan Rigato
+*/
+body{
+
+
+    text-align: center;
+    height:100%;
+    padding-bottom:100px;
+
+
+
+}
+nav{
+    color:rgb(0,255,0);
+    padding-left:30px;
+    padding-top:10px;
+    
+    text-align: center;
+   
+}
+
+div{
+    padding-left:25px;
+    padding-top:25px;
+    text-align: center;
+
+}
+
+
+
+
+/*Places the footer at the bottom of the webpage*/
+footer{
+   position:fixed;
+    height:50px;
+    background-color:silver;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin-bottom:0px;
+
+
+}
+.container{
+    padding-left:25px;
+    padding-top:25px;
+    padding-bottom:100px;
+    text-align: center;
+    background-color: hsla(120, 100%, 50%, 0.3);
+}
+
+/*
+    places a margin for all explanation blocks at auto
+    such that it is evenly spread across the 
+    width
+*/
+.explanation{
+    width:800px;
+    margin: 0px auto;
+    text-align: left;
+}
+
+
+
+margin{
+    background-color: pink;
+}
+
+
+
