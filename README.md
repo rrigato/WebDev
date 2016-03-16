@@ -35,7 +35,7 @@ and
 To do this on Windows go to Control Panel -> Settings -> Advanced System Settings -> Environment Variables. Where the bins are located might differ on your local path  depending on where you downloaded them into.
 
 
-**Note That you only have to do steps 12-16 one time **
+**Note That you only have to do steps 12-16 one time**
 
 Step 12) Open file explorer and go to where you downloaded the google app engine sdk. Enter the bin directory. 
 
@@ -63,4 +63,4 @@ Step 16) A browser will open with a code that you need to copy and paste in the 
 
 Step 17) Anytime you want to deploy changes to your project, right click on the project -> Deploy to Google app engine.
 
-Step 18) your website can be found at the www.<your-google-project-name>.blogspot.com
+Step 18) your website can be found at the your-google-project-name.blogspot.com
