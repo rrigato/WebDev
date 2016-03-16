@@ -24,9 +24,18 @@ Step 9) Go to web pages -> WEB_INF -> appengine-web.xml in you project directory
 
 Step 10) Right Click on your project in the netbeans ide and select 'Change Email/Password'. Enter the google email and password you used to create the google developer account in step 1)
 
-Step 11) You need to add the C:\Program Files\apache-maven-3.3.9-bin (1)\apache-maven-3.3.9\bin and C:\Program 
-Files\Java\jdk1.7.0_79\bin to your PATH environment variables. To do this on Windows go to Control Panel -> Settings -> Advanced System
-Settings -> Environment Variables. Where the bins are located might differ on your local path  depending on where you downloaded them into.
+Step 11) You need to add the 
+
+`C:\Program Files\apache-maven-3.3.9-bin (1)\apache-maven-3.3.9\bin` 
+
+and 
+
+`C:\Program Files\Java\jdk1.7.0_79\bin to your PATH environment variables`
+
+To do this on Windows go to Control Panel -> Settings -> Advanced System Settings -> Environment Variables. Where the bins are located might differ on your local path  depending on where you downloaded them into.
+
+
+**Note That you only have to do steps 12-16 one time **
 
 Step 12) Open file explorer and go to where you downloaded the google app engine sdk. Enter the bin directory. 
 
@@ -39,3 +48,19 @@ Above this line change the directory to where your java jdk bin is located by do
 ```cd C:\Program Files\Java\jdk1.7.0_79\bin```
 
 Make sure you have the correct path to your jdk.
+
+Step 14) Open a command prompt and change directories until you are in you google appengine sdk bin. Example:
+
+`C:\Program Files\appengine-java-sdk-1.9.32\appengine-java-sdk-1.9.32\bin`
+
+Step 15) Run the following command:
+
+`appcfg update C:\Users\<your-username-here>\Documents\NetBeansProjects\WebApplication1\web`
+
+make sure the second arguement of the command is the path to the netbeans google app engine project you created in step 8).
+
+Step 16) A browser will open with a code that you need to copy and paste in the command line. Your project is now deployed.
+
+Step 17) Anytime you want to deploy changes to your project, right click on the project -> Deploy to Google app engine.
+
+Step 18) your website can be found at the www.<your-google-project-name>.blogspot.com
