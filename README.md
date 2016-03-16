@@ -24,12 +24,18 @@ Step 9) Go to web pages -> WEB_INF -> appengine-web.xml in you project directory
 
 Step 10) Right Click on your project in the netbeans ide and select 'Change Email/Password'. Enter the google email and password you used to create the google developer account in step 1)
 
-Step 11) You need to add the C:\Program Files\apache-maven-3.3.9-bin (1)\apache-maven-3.3.9\bin and C:\
+Step 11) You need to add the C:\Program Files\apache-maven-3.3.9-bin (1)\apache-maven-3.3.9\bin and C:\Program 
 Files\Java\jdk1.7.0_79\bin to your PATH environment variables. To do this on Windows go to Control Panel -> Settings -> Advanced System
 Settings -> Environment Variables. Where the bins are located might differ on your local path  depending on where you downloaded them into.
 
 Step 12) Open file explorer and go to where you downloaded the google app engine sdk. Enter the bin directory. 
 
-Step 13) Right click on appcfg.cmd and open it with notepad ++. Above the line that has:
+Step 13) Right click on appcfg.cmd and open it with notepad ++. Find the line that has:
 
-'java -Xmx1100m -cp "%~dp0\..\lib\appengine-tools-api.jar" com.google.appengine.tools.admin.AppCfg %*'
+`java -Xmx1100m -cp "%~dp0\..\lib\appengine-tools-api.jar" com.google.appengine.tools.admin.AppCfg %*`
+
+Above this line change the directory to where your java jdk bin is located by doing the following:
+
+```cd C:\Program Files\Java\jdk1.7.0_79\bin```
+
+Make sure you have the correct path to your jdk.
