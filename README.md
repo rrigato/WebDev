@@ -1,5 +1,16 @@
-# WebDev
-This repository will be used for web application development
+[Website hosted in the google app engine] (http://ryanrigato-1252.appspot.com/)
+
+##Links to d3 source code for this project
+The following links will take you directly to the source code for the D3 visualizations within this repository, as it can be difficult 
+to navigate if you are unfamiliar with the directory structure of netbeans applications:
+
+
+
+## WebDev
+This repository will be used for web application development. This web application was developed using the java full tech stack
+framework. The design pattern used is model view controller (MVC). Connections to a mysql database where made with the jdbc driver.
+All visualizations were created using Data Driven Documents (d3.js) a javascript library. 
+This web application was was developed using netbeans 8.0.2 with java 1.7.0_79 jdk.
 
 
 
