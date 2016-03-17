@@ -4,13 +4,25 @@
 The following links will take you directly to the source code for the D3 visualizations within this repository, as it can be difficult 
 to navigate if you are unfamiliar with the directory structure of netbeans applications:
 
+#######Visualization 1: [Donut Chart of Mario Video Game Sales] (https://github.com/rrigato/WebDev/blob/master/ryanrigato/web/welcome.jsp)
 
+#######Visualization 2: [Histogram of HS Graduation Rates] (https://github.com/rrigato/WebDev/blob/master/ryanrigato/web/graph1.jsp)
+
+#######Visualization 3: [Bubble Plot of Pokemon Video Game Sales] (https://github.com/rrigato/WebDev/blob/master/ryanrigato/web/graph2.jsp)
+
+#######Visualization 4: [Group Bar Chart of China Labor Union Strikes] (https://github.com/rrigato/WebDev/blob/master/ryanrigato/web/graph3.jsp)
+
+#######Visualization 5: [Heat Map of Batman Versus Superman] (https://github.com/rrigato/WebDev/blob/master/ryanrigato/web/graph4.jsp)
+
+#######Visualization 6: [Stacked Bar Chart of Manga Volumes Sold] (https://github.com/rrigato/WebDev/blob/master/ryanrigato/web/graph5.jsp)
+
+#######Visualization 7: [Line Graph of Kaggle Users] (https://github.com/rrigato/WebDev/blob/master/ryanrigato/web/graph6.jsp)
 
 ## WebDev
 This repository will be used for web application development. This web application was developed using the java full tech stack
 framework. The design pattern used is model view controller (MVC). Connections to a mysql database where made with the jdbc driver.
 All visualizations were created using Data Driven Documents (d3.js) a javascript library. 
-This web application was was developed using netbeans 8.0.2 with java 1.7.0_79 jdk.
+This web application was was developed using netbeans 8.0.2 with jdk 1.7.0_79 
 
 
 
