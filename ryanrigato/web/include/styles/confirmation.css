@@ -72,6 +72,15 @@ footer{
 margin{
     background-color: pink;
 }
-
-
+.words{
+    width:90%;
+    display:block;
+    float:left;
+}
+.me{
+    display:block;
+    text-align: left;
+    width:10%;
+    float:left;
+}
 
