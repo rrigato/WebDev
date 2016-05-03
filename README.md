@@ -86,4 +86,4 @@ Step 16) A browser will open with a code that you need to copy and paste in the 
 
 Step 17) Anytime you want to deploy changes to your project, right click on the project -> Deploy to Google app engine.
 
-Step 18) your website can be found at the your-google-project-name.blogspot.com
+Step 18) your website can be found at the your-google-project-name.appspot.com
