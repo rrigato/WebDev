@@ -93,4 +93,4 @@ Step 18) your website can be found at the your-google-project-name.appspot.com
 ####Development Notes:
 * Stable Version 1.0 is commit 106 (updated: 6/5/2016)
 * Stable Versions are released using netbeans 8.0.2 and jdk 1.7_079
-* Test Versions are developed on netbeans 8.1.0
+* Test Versions are developed on netbeans 8.1.0 which this github repository tracks
