@@ -73,8 +73,8 @@ function dashboard(id, fData){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 700 - hGDim.l - hGDim.r, 
-        hGDim.h = 400 - hGDim.t - hGDim.b;
+        hGDim.w = 525 - hGDim.l - hGDim.r, 
+        hGDim.h = 425 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
         var hGsvg = d3.select(id).append("svg")
@@ -155,7 +155,7 @@ function dashboard(id, fData){
     
     // function to handle pieChart.
     function pieChart(pD){
-        var pC ={},    pieDim ={w:250, h: 250};
+        var pC ={},    pieDim ={w:425, h: 425};
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
                 
         // create svg for pie chart.
@@ -264,14 +264,14 @@ function dashboard(id, fData){
 
 <script>
 var freqData=[
- {State:'2015',freq:{XBoxOne:8.6,  WiiU:3.56, PS4:17.37, Nintendo3DS:7.86,  XBox360:0.00,  PS3:0,Wii:0, DS:0 }}
-,{State:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:9.74,  XBox360:0.00,  PS3:0,Wii:0, DS:0}}
-,{State:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:14.31,  XBox360:6.24,  PS3:0,Wii:0, DS:0}}
-,{State:'2012',freq:{XBoxOne:0.00, WiiU:2.17,  PS4:0.00, Nintendo3DS:13.48,  XBox360:10.69,  PS3:0,Wii:0, DS:0}}
-,{State:'2011',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:12.56,  XBox360:13.95,  PS3:0,Wii:0, DS:0}}
-,{State:'2010',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:13.53,  PS3:0,Wii:0, DS:0}}
-,{State:'2009',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:10.36,  PS3:0,Wii:0, DS:0}}
-,{State:'2008',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:11.16,  PS3:0,Wii:0, DS:0}}
+ {State:'2015',freq:{XBoxOne:8.60,  WiiU:3.56, PS4:17.37, Nintendo3DS:7.86,  XBox360:0.00,  PS3:0,Wii:0, DS:0 }}
+,{State:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:9.74,  XBox360:0.00,  PS3:3.56,Wii:0, DS:0}}
+,{State:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:14.31,  XBox360:6.24,  PS3:8.26,Wii:1.95, DS:0}}
+,{State:'2012',freq:{XBoxOne:0.00, WiiU:2.17,  PS4:0.00, Nintendo3DS:13.48,  XBox360:10.69,  PS3:11.97,Wii:5.08, DS:3.01}}
+,{State:'2011',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:12.56,  XBox360:13.95,  PS3:14.42,Wii:11.49, DS:8.76}}
+,{State:'2010',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:13.53,  PS3:13.83,Wii:17.26, DS:20.55}}
+,{State:'2009',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:10.36,  PS3:13.26,Wii:21.05, DS:27.28}}
+,{State:'2008',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:11.16,  PS3:10.46,Wii:24.09, DS:29.47}}
 ];
 
 dashboard('#dashboard',freqData);
