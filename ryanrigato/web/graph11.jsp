@@ -61,16 +61,20 @@ rect:hover {  fill:blue; }
 <script>
 function dashboard(id, fData){
     var barColor = 'steelblue';
-    function segColor(c){ return {XBoxOne:"#807dba", WiiU:"#e08214",PS4:"#41ab5d", Nintendo3DS:"rgb(24,15, 155)"}[c]; }
+    function segColor(c){ return {XBoxOne:"#807dba", WiiU:"#e08214",PS4:"#41ab5d", 
+            Nintendo3DS:"rgb(24,15, 155)", Xbox360:"rgb(255, 102, 153)", 
+            PS3:"rgb(0, 0, 0)", Wii:"rgb(255, 51, 0)", DS:"rgb(102, 255, 204)"}[c]; }
     
     // compute total for each state.
-    fData.forEach(function(d){d.total=d.freq.XBoxOne+d.freq.WiiU+d.freq.PS4 + d.freq.Nintendo3DS;});
+    fData.forEach(function(d){d.total=d.freq.XBoxOne+d.freq.WiiU+d.freq.PS4 + 
+                d.freq.Nintendo3DS + d.freq.XBox360 + d.freq.PS3 + d.freq.Wii
+                + d.freq.DS;});
     
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 500 - hGDim.l - hGDim.r, 
-        hGDim.h = 300 - hGDim.t - hGDim.b;
+        hGDim.w = 700 - hGDim.l - hGDim.r, 
+        hGDim.h = 400 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
         var hGsvg = d3.select(id).append("svg")
@@ -244,7 +248,8 @@ function dashboard(id, fData){
     }
     
     // calculate total frequency by segment for all state.
-    var tF = ['XBoxOne','WiiU','PS4', 'Nintendo3DS'].map(function(d){ 
+    var tF = ['XBoxOne','WiiU','PS4', 'Nintendo3DS', 'Xbox360', 
+        'PS3', 'Wii', 'DS'].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
     });    
     
@@ -259,10 +264,14 @@ function dashboard(id, fData){
 
 <script>
 var freqData=[
- {State:'2015',freq:{XBoxOne:8.6,  WiiU:3.56, PS4:17.37, Nintendo3DS:5 }}
-,{State:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:5}}
-,{State:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:5}}
-
+ {State:'2015',freq:{XBoxOne:8.6,  WiiU:3.56, PS4:17.37, Nintendo3DS:7.86,  XBox360:0.00,  PS3:0,Wii:0, DS:0 }}
+,{State:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:9.74,  XBox360:0.00,  PS3:0,Wii:0, DS:0}}
+,{State:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:14.31,  XBox360:6.24,  PS3:0,Wii:0, DS:0}}
+,{State:'2012',freq:{XBoxOne:0.00, WiiU:2.17,  PS4:0.00, Nintendo3DS:13.48,  XBox360:10.69,  PS3:0,Wii:0, DS:0}}
+,{State:'2011',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:12.56,  XBox360:13.95,  PS3:0,Wii:0, DS:0}}
+,{State:'2010',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:13.53,  PS3:0,Wii:0, DS:0}}
+,{State:'2009',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:10.36,  PS3:0,Wii:0, DS:0}}
+,{State:'2008',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:11.16,  PS3:0,Wii:0, DS:0}}
 ];
 
 dashboard('#dashboard',freqData);
