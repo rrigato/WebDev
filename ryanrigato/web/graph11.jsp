@@ -61,10 +61,10 @@ rect:hover {  fill:blue; }
 <script>
 function dashboard(id, fData){
     var barColor = 'steelblue';
-    function segColor(c){ return {XBoxOne:"#807dba", mid:"#e08214",high:"#41ab5d"}[c]; }
+    function segColor(c){ return {XBoxOne:"#807dba", WiiU:"#e08214",PS4:"#41ab5d", Nintendo3DS:"rgb(24,15, 155)"}[c]; }
     
     // compute total for each state.
-    fData.forEach(function(d){d.total=d.freq.XBoxOne+d.freq.mid+d.freq.high;});
+    fData.forEach(function(d){d.total=d.freq.XBoxOne+d.freq.WiiU+d.freq.PS4 + d.freq.Nintendo3DS;});
     
     // function to handle histogram.
     function histoGram(fD){
@@ -244,7 +244,7 @@ function dashboard(id, fData){
     }
     
     // calculate total frequency by segment for all state.
-    var tF = ['XBoxOne','mid','high'].map(function(d){ 
+    var tF = ['XBoxOne','WiiU','PS4', 'Nintendo3DS'].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
     });    
     
@@ -259,9 +259,9 @@ function dashboard(id, fData){
 
 <script>
 var freqData=[
-{State:'2015',freq:{XBoxOne:8.6, mid:3.56, high:17.37}}
-,{State:'2014',freq:{XBoxOne:7.91, mid:3.64, high:14.59}}
-,{State:'2013',freq:{XBoxOne:3.08, mid:3.1, high:4.49}}
+ {State:'2015',freq:{XBoxOne:8.6,  WiiU:3.56, PS4:17.37, Nintendo3DS:5 }}
+,{State:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:5}}
+,{State:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:5}}
 
 ];
 
