@@ -1,0 +1,83 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 3, 2016, 3:52:35 PM
+    Author     : Ryan Rigato
+*/
+
+path {  stroke: #fff; }
+path:hover {  opacity:0.9; }
+rect:hover {  fill:blue; }
+.axis {  font: 10px sans-serif; }
+.legend tr{    border-bottom:1px solid grey; }
+.legend tr:first-child{    border-top:1px solid grey; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {  display: none; }
+.legend{
+    margin-bottom:76px;
+    display:inline-block;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+.legend td{
+    padding:4px 5px;
+    vertical-align:bottom;
+}
+.legendFreq, .legendPerc{
+    align:right;
+    width:50px;
+}
+body{
+
+
+
+    height:100%;
+    padding-bottom:100px;
+
+
+
+}
+nav{
+    color:rgb(0,255,0);
+    padding-left:30px;
+    padding-top:10px;
+    
+    
+   
+}
+
+
+
+
+/*Places the footer at the bottom of the webpage*/
+footer{
+   position:fixed;
+    height:50px;
+    background-color:silver;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin-bottom:0px;
+    text-align:center;
+
+
+}
+
+/*
+    Fixes the bug where the dashboard did not have a smooth transition 
+    due to the text-align attribute
+*/
+#dashboard{
+    padding-left: 150px;
+}
+

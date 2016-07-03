@@ -13,50 +13,18 @@
         <script src="include/js/bootstrap.min.js"></script>
         <!-- import style sheets, d3, header and jstl library-->
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/> 
-        <link rel="stylesheet" href="include/styles/confirmation.css" type="text/css"/> 
-        <link rel="stylesheet" href="include/styles/graph3.css" type="text/css"/> 
+        <link rel="stylesheet" href="include/styles/graph11.css" type="text/css"/> 
+
         <script src="//d3js.org/d3.v3.min.js"></script>
         <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%> 
         <title>JSP Page</title>
     </head>
     <c:import url="Header.jsp"/> 
     <body>  
-        <style>
+        <div id ="content">
 
-path {  stroke: #fff; }
-path:hover {  opacity:0.9; }
-rect:hover {  fill:blue; }
-.axis {  font: 10px sans-serif; }
-.legend tr{    border-bottom:1px solid grey; }
-.legend tr:first-child{    border-top:1px solid grey; }
+<div id="dashboard">
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {  display: none; }
-.legend{
-    margin-bottom:76px;
-    display:inline-block;
-    border-collapse: collapse;
-    border-spacing: 0px;
-}
-.legend td{
-    padding:4px 5px;
-    vertical-align:bottom;
-}
-.legendFreq, .legendPerc{
-    align:right;
-    width:50px;
-}
-
-</style>
-
-<div id='dashboard'>
-</div>
 
 <script>
 function dashboard(id, fData){
@@ -234,7 +202,7 @@ function dashboard(id, fData){
             var l = legend.select("tbody").selectAll("tr").data(nD);
 
             // update the frequencies.
-            l.select(".legendFreq").text(function(d){ return d3.format(",")(d.freq);});
+            l.select(".legendFreq").text(function(d){ return d3.format("r")(d.freq);});
 
             // update the percentage column.
             l.select(".legendPerc").text(function(d){ return getLegend(d,nD);});        
@@ -276,7 +244,8 @@ var freqData=[
 
 dashboard('#dashboard',freqData);
 </script>
-
+</div>
+</div>
     </body>
     <c:import url="footer.jsp"/> 
 </html>
