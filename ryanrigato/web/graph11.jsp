@@ -30,7 +30,7 @@
 function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ return {XBoxOne:"#807dba", WiiU:"#e08214",PS4:"#41ab5d", 
-            Nintendo3DS:"rgb(24,15, 155)", Xbox360:"rgb(255, 102, 153)", 
+            Nintendo3DS:"rgb(24,15, 155)", XBox360:"rgb(255, 102, 153)", 
             PS3:"rgb(0, 0, 0)", Wii:"rgb(255, 51, 0)", DS:"rgb(102, 255, 204)"}[c]; }
     
     // compute total for each state.
@@ -78,7 +78,7 @@ function dashboard(id, fData){
             .on("mouseout",mouseout);// mouseout is defined below.
             
         //Create the frequency labels above the rectangles.
-        bars.append("text").text(function(d){ return d3.format(",")(d[1])})
+        bars.append("text").text(function(d){ return d3.format(",")(d[1]);})
             .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
             .attr("y", function(d) { return y(d[1])-5; })
             .attr("text-anchor", "middle");
@@ -216,7 +216,7 @@ function dashboard(id, fData){
     }
     
     // calculate total frequency by segment for all state.
-    var tF = ['XBoxOne','WiiU','PS4', 'Nintendo3DS', 'Xbox360', 
+    var tF = ['XBoxOne','WiiU','PS4', 'Nintendo3DS', 'XBox360', 
         'PS3', 'Wii', 'DS'].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
     });    
