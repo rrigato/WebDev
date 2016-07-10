@@ -245,6 +245,24 @@ var freqData=[
 dashboard('#dashboard',freqData);
 </script>
 </div>
+            <div class="explanation">
+
+            <p>
+
+            </p>
+
+            <p>
+
+            </p>
+
+            <p>
+
+
+            </p>
+
+
+            <a href ="http://www.statista.com/statistics/276768/global-unit-sales-of-video-game-consoles/">Source: Statista</a>
+        </div>
 </div>
     </body>
     <c:import url="footer.jsp"/> 
