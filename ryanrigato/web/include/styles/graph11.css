@@ -73,6 +73,7 @@ footer{
 
 }
 
+#content{}
 /*
     Fixes the bug where the dashboard did not have a smooth transition 
     due to the text-align attribute
