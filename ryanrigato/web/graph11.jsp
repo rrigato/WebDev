@@ -247,16 +247,27 @@ dashboard('#dashboard',freqData);
 </div>
             <div class="explanation">
 
+                <br>    
             <p>
-
+                    While home consoles have been around since the 1980's, the 
+                    early 2000's are when they really began to prosper. The
+                    above graph demonstrates the sales of each console by year 
+                    for Nintendo, Microsoft, and Sony.
             </p>
 
             <p>
-
+                    If you click on the year, the pie chart (above right) will transition to
+                    show the proportion of sales that each video game console
+                    had for that particular year. Here, the maximum value is 1 
+                    and the minimum is 0.
+                
             </p>
 
             <p>
-
+                    If you click on the slice of the pie chart corresponding to 
+                    a video game console, histogram (above left) will transition
+                    to show the video game sales of that console per year in 
+                    millions of consoles sold.
 
             </p>
 

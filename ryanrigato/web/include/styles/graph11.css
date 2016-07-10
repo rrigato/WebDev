@@ -78,6 +78,12 @@ footer{
     due to the text-align attribute
 */
 #dashboard{
-    padding-left: 150px;
+    padding-left: 200px;
+}
+
+.explanation{
+    width:800px;
+    margin: 0px auto;
+    text-align: left;
 }
 
