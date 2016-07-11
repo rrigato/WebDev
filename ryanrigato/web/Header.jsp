@@ -52,6 +52,10 @@ This header contains the navbar which is accesible at all pages
                         <li><a href ="graph6.jsp" data-toggle="tooltip" 
                                title="Click for a graph of Kaggle User Rankings over time">
                                 Kaggle Users</a></li>
+                        <li><a href ="graph7.jsp" data-toggle="tooltip" 
+                               title="Click for a graph of Mario Video Game Sales">
+                                Mario Games</a></li>                                
+                                
                         <li><a href="IndexServlet" data-toggle="tooltip" 
                                title="Click to login or create an account">Login</a></li>
                         

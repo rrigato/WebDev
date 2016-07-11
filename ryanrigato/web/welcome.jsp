@@ -33,7 +33,7 @@ function dashboard(id, fData){
             Nintendo3DS:"rgb(24,15, 155)", XBox360:"rgb(255, 102, 153)", 
             PS3:"rgb(0, 0, 0)", Wii:"rgb(255, 51, 0)", DS:"rgb(102, 255, 204)"}[c]; }
     
-    // compute total for each state.
+    // compute total for each Year.
     fData.forEach(function(d){d.total=d.freq.XBoxOne+d.freq.WiiU+d.freq.PS4 + 
                 d.freq.Nintendo3DS + d.freq.XBox360 + d.freq.PS3 + d.freq.Wii
                 + d.freq.DS;});
@@ -84,8 +84,8 @@ function dashboard(id, fData){
             .attr("text-anchor", "middle");
         
         function mouseover(d){  // utility function to be called on mouseover.
-            // filter for selected state.
-            var st = fData.filter(function(s){ return s.State == d[0];})[0],
+            // filter for selected Year.
+            var st = fData.filter(function(s){ return s.Year == d[0];})[0],
                 nD = d3.keys(st.freq).map(function(s){ return {type:s, freq:st.freq[s]};});
                
             // call update functions of pie-chart and legend.    
@@ -115,7 +115,7 @@ function dashboard(id, fData){
 
             // transition the frequency labels location and change value.
             bars.select("text").transition().duration(500)
-                .text(function(d){ return d3.format(",")(d[1])})
+                .text(function(d){ return d3.format(".2f")(d[1])})
                 .attr("y", function(d) {return y(d[1])-5; });            
         }        
         return hG;
@@ -152,13 +152,13 @@ function dashboard(id, fData){
         function mouseover(d){
             // call the update function of histogram with new data.
             hG.update(fData.map(function(v){ 
-                return [v.State,v.freq[d.data.type]];}),segColor(d.data.type));
+                return [v.Year,v.freq[d.data.type]];}),segColor(d.data.type));
         }
         //Utility function to be called on mouseout a pie slice.
         function mouseout(d){
             // call the update function of histogram with all data.
             hG.update(fData.map(function(v){
-                return [v.State,v.total];}), barColor);
+                return [v.Year,v.total];}), barColor);
         }
         // Animating the pie-slice requiring a custom function which specifies
         // how the intermediate paths should be drawn.
@@ -215,14 +215,14 @@ function dashboard(id, fData){
         return leg;
     }
     
-    // calculate total frequency by segment for all state.
+    // calculate total frequency by segment for all Year.
     var tF = ['XBoxOne','WiiU','PS4', 'Nintendo3DS', 'XBox360', 
         'PS3', 'Wii', 'DS'].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
     });    
     
-    // calculate total frequency by state for all segment.
-    var sF = fData.map(function(d){return [d.State,d.total];});
+    // calculate total frequency by Year for all segment.
+    var sF = fData.map(function(d){return [d.Year,d.total];});
 
     var hG = histoGram(sF), // create the histogram.
         pC = pieChart(tF), // create the pie-chart.
@@ -232,14 +232,14 @@ function dashboard(id, fData){
 
 <script>
 var freqData=[
- {State:'2015',freq:{XBoxOne:8.60,  WiiU:3.56, PS4:17.37, Nintendo3DS:7.86,  XBox360:0.00,  PS3:0,Wii:0, DS:0 }}
-,{State:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:9.74,  XBox360:0.00,  PS3:3.56,Wii:0, DS:0}}
-,{State:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:14.31,  XBox360:6.24,  PS3:8.26,Wii:1.95, DS:0}}
-,{State:'2012',freq:{XBoxOne:0.00, WiiU:2.17,  PS4:0.00, Nintendo3DS:13.48,  XBox360:10.69,  PS3:11.97,Wii:5.08, DS:3.01}}
-,{State:'2011',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:12.56,  XBox360:13.95,  PS3:14.42,Wii:11.49, DS:8.76}}
-,{State:'2010',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:13.53,  PS3:13.83,Wii:17.26, DS:20.55}}
-,{State:'2009',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:10.36,  PS3:13.26,Wii:21.05, DS:27.28}}
-,{State:'2008',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:11.16,  PS3:10.46,Wii:24.09, DS:29.47}}
+ {Year:'2015',freq:{XBoxOne:8.60,  WiiU:3.56, PS4:17.37, Nintendo3DS:7.86,  XBox360:0.00,  PS3:0,Wii:0, DS:0 }}
+,{Year:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:9.74,  XBox360:0.00,  PS3:3.56,Wii:0, DS:0}}
+,{Year:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:14.31,  XBox360:6.24,  PS3:8.26,Wii:1.95, DS:0}}
+,{Year:'2012',freq:{XBoxOne:0.00, WiiU:2.17,  PS4:0.00, Nintendo3DS:13.48,  XBox360:10.69,  PS3:11.97,Wii:5.08, DS:3.01}}
+,{Year:'2011',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:12.56,  XBox360:13.95,  PS3:14.42,Wii:11.49, DS:8.76}}
+,{Year:'2010',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:13.53,  PS3:13.83,Wii:17.26, DS:20.55}}
+,{Year:'2009',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:10.36,  PS3:13.26,Wii:21.05, DS:27.28}}
+,{Year:'2008',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:11.16,  PS3:10.46,Wii:24.09, DS:29.47}}
 ];
 
 dashboard('#dashboard',freqData);
@@ -248,28 +248,28 @@ dashboard('#dashboard',freqData);
             <div class="explanation">
 
                 <br>    
-            <p>
-                    While home consoles have been around since the 1980's, the 
-                    early 2000's are when they really began to prosper. The
-                    above graph demonstrates the sales of each console by year 
-                    for Nintendo, Microsoft, and Sony.
-            </p>
+                <p>
+                        While home consoles have been around since the 1980's, the 
+                        early 2000's are when they really began to prosper. The
+                        above graph demonstrates the sales of each console by year 
+                        for Nintendo, Microsoft, and Sony.
+                </p>
 
-            <p>
-                    If you click on the year, the pie chart (above right) will transition to
-                    show the proportion of sales that each video game console
-                    had for that particular year. Here, the maximum value is 1 
-                    and the minimum is 0.
-                
-            </p>
+                <p>
+                        If you click on the year, the pie chart (above right) will transition to
+                        show the proportion of sales that each video game console
+                        had for that particular year. Here, the maximum value is 1 
+                        and the minimum is 0.
 
-            <p>
-                    If you click on the slice of the pie chart corresponding to 
-                    a video game console, histogram (above left) will transition
-                    to show the video game sales of that console per year in 
-                    millions of consoles sold.
+                </p>
 
-            </p>
+                <p>
+                        If you click on the slice of the pie chart corresponding to 
+                        a video game console, histogram (above left) will transition
+                        to show the video game sales of that console per year in 
+                        millions of consoles sold.
+
+                </p>
 
 
             <a href ="http://www.statista.com/statistics/276768/global-unit-sales-of-video-game-consoles/">Source: Statista</a>
