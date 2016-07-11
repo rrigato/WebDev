@@ -22,14 +22,16 @@
     <c:import url="Header.jsp"/> 
     <body>  
         <div id ="content">
-
+<div class="alert alert-info">
+  <strong>Info!</strong> Scroll over the visualization to interact with the data
+</div>
 <div id="dashboard">
 
 
 <script>
 function dashboard(id, fData){
-    var barColor = 'steelblue';
-    function segColor(c){ return {XBoxOne:"#807dba", WiiU:"#e08214",PS4:"#41ab5d", 
+    var barColor = 'rgb(51, 102, 204)';
+    function segColor(c){ return {XBoxOne:"rgb(128,125,186)", WiiU:"rgb(224,130,20)",PS4:"rgb(65,171,93)", 
             Nintendo3DS:"rgb(24,15, 155)", XBox360:"rgb(255, 102, 153)", 
             PS3:"rgb(0, 0, 0)", Wii:"rgb(255, 51, 0)", DS:"rgb(102, 255, 204)"}[c]; }
     
@@ -41,7 +43,7 @@ function dashboard(id, fData){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 525 - hGDim.l - hGDim.r, 
+        hGDim.w = 500 - hGDim.l - hGDim.r, 
         hGDim.h = 425 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
@@ -115,7 +117,7 @@ function dashboard(id, fData){
 
             // transition the frequency labels location and change value.
             bars.select("text").transition().duration(500)
-                .text(function(d){ return d3.format(".2f")(d[1])})
+                .text(function(d){ return d3.format(".2f")(d[1]);})
                 .attr("y", function(d) {return y(d[1])-5; });            
         }        
         return hG;
@@ -230,20 +232,24 @@ function dashboard(id, fData){
 }
 </script>
 
-<script>
-var freqData=[
- {Year:'2015',freq:{XBoxOne:8.60,  WiiU:3.56, PS4:17.37, Nintendo3DS:7.86,  XBox360:0.00,  PS3:0,Wii:0, DS:0 }}
-,{Year:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:9.74,  XBox360:0.00,  PS3:3.56,Wii:0, DS:0}}
-,{Year:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:14.31,  XBox360:6.24,  PS3:8.26,Wii:1.95, DS:0}}
-,{Year:'2012',freq:{XBoxOne:0.00, WiiU:2.17,  PS4:0.00, Nintendo3DS:13.48,  XBox360:10.69,  PS3:11.97,Wii:5.08, DS:3.01}}
-,{Year:'2011',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:12.56,  XBox360:13.95,  PS3:14.42,Wii:11.49, DS:8.76}}
-,{Year:'2010',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:13.53,  PS3:13.83,Wii:17.26, DS:20.55}}
-,{Year:'2009',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:10.36,  PS3:13.26,Wii:21.05, DS:27.28}}
-,{Year:'2008',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:11.16,  PS3:10.46,Wii:24.09, DS:29.47}}
-];
 
-dashboard('#dashboard',freqData);
-</script>
+        <script>
+        //Creates the data for the script
+
+        var freqData=[
+         {Year:'2015',freq:{XBoxOne:8.60,  WiiU:3.56, PS4:17.37, Nintendo3DS:7.86,  XBox360:0.00,  PS3:0,Wii:0, DS:0 }}
+        ,{Year:'2014',freq:{XBoxOne:7.91, WiiU:3.64, PS4:14.59, Nintendo3DS:9.74,  XBox360:0.00,  PS3:3.56,Wii:0, DS:0}}
+        ,{Year:'2013',freq:{XBoxOne:3.08, WiiU:3.1,  PS4:4.49, Nintendo3DS:14.31,  XBox360:6.24,  PS3:8.26,Wii:1.95, DS:0}}
+        ,{Year:'2012',freq:{XBoxOne:0.00, WiiU:2.17,  PS4:0.00, Nintendo3DS:13.48,  XBox360:10.69,  PS3:11.97,Wii:5.08, DS:3.01}}
+        ,{Year:'2011',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:12.56,  XBox360:13.95,  PS3:14.42,Wii:11.49, DS:8.76}}
+        ,{Year:'2010',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:13.53,  PS3:13.83,Wii:17.26, DS:20.55}}
+        ,{Year:'2009',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:10.36,  PS3:13.26,Wii:21.05, DS:27.28}}
+        ,{Year:'2008',freq:{XBoxOne:0.00, WiiU:0.00,  PS4:0.00, Nintendo3DS:0,  XBox360:11.16,  PS3:10.46,Wii:24.09, DS:29.47}}
+        ];
+
+        //calls the dashboard
+        dashboard('#dashboard',freqData);
+        </script>
 </div>
             <div class="explanation">
 
