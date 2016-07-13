@@ -22,7 +22,7 @@
     <c:import url="Header.jsp"/> 
     <body>  
         <div id ="content">
-<div class="alert alert-info">
+<div id ="info" class="alert alert-info">
   <strong>Info!</strong> Scroll over the visualization to interact with the data
 </div>
 <div id="dashboard">
@@ -282,5 +282,5 @@ function dashboard(id, fData){
         </div>
 </div>
     </body>
-    <c:import url="footer.jsp"/> 
+    <!-- <c:import url="footer.jsp"/> -->   
 </html>
