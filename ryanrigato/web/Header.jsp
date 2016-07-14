@@ -17,12 +17,13 @@ This header contains the navbar which is accesible at all pages
         <link rel="stylesheet" href="include/styles/bootstrap.min.css" type="text/css"/>
         <script src="include/js/jquery-1.12.0.js"></script>
         <script src="include/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="include/styles/header.css" type="text/css"/>
 
         <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
     </head>
     <body>
 
-        <nav class="navbar navbar-default">
+
             <div class="container-fluid">
 
                 <!-- Logo -->
@@ -67,7 +68,7 @@ This header contains the navbar which is accesible at all pages
                 </div>
 
             </div>
-        </nav>
+
 
     </body>
 </html>
