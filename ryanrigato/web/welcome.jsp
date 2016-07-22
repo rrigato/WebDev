@@ -251,6 +251,7 @@ function dashboard(id, fData){
         dashboard('#dashboard',freqData);
         </script>
 </div>
+            <br>
             <div class="explanation">
 
                 <br>    
@@ -258,7 +259,7 @@ function dashboard(id, fData){
                         While home consoles have been around since the 1980's, the 
                         early 2000's are when they really began to prosper. The
                         above graph demonstrates the sales of each console by year 
-                        for Nintendo, Microsoft, and Sony.
+                        for Nintendo, Microsoft, and Sony from 2008 until 2015.
                 </p>
 
                 <p>
@@ -271,7 +272,7 @@ function dashboard(id, fData){
 
                 <p>
                         If you click on the slice of the pie chart corresponding to 
-                        a video game console, histogram (above left) will transition
+                        a video game console, the histogram (above left) will transition
                         to show the video game sales of that console per year in 
                         millions of consoles sold.
 
