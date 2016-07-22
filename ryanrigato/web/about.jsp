@@ -66,6 +66,6 @@ About servlet links to this page
             <br>
             <a href="https://github.com/rrigato/WebDev">Source Code for this website</a>
     </div>
-        <c:import url="footer.jsp"/>
+
     </body>
 </html>

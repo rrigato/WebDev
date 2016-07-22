@@ -17,7 +17,7 @@
 
         <script src="//d3js.org/d3.v3.min.js"></script>
         <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%> 
-        <title>JSP Page</title>
+        <title>Ryan Rigato's Website</title>
     </head>
     <c:import url="Header.jsp"/> 
     <body>  
