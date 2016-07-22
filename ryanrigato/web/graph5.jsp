@@ -165,6 +165,5 @@
        <a href ="http://www.animenewsnetwork.com/news/2015-01-02/top-selling-manga-in-japan-by-volume-2014/.82827">Source: ANN</a>
    </div>
     </body>
-    
-    <c:import url="footer.jsp"/> 
+
 </html>

@@ -170,5 +170,5 @@
             <a href ="http://maps.clb.org.hk/strikes/en">Source: China Labor Bulletin</a>
         </div>
     </body>
-    <c:import url="footer.jsp"/> 
+ 
 </html>

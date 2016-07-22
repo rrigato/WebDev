@@ -169,5 +169,4 @@
             <a href ="https://www.kaggle.com/kaggle/meta-kaggle">Source: Kaggle</a>
         </div>
     </body>
-    <c:import url="footer.jsp"/> 
 </html>

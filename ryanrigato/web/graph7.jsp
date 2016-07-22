@@ -122,5 +122,4 @@ This is the first page the user sees when they go onto the website
         <a href ="http://vgsales.wikia.com/wiki/Best_selling_game_franchises">Source: Wikia</a>
         </div>
     </body>
-    <c:import url="footer.jsp"/> 
 </html>
