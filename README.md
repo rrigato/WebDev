@@ -89,6 +89,20 @@ Step 17) Anytime you want to deploy changes to your project, right click on the 
 Step 18) your website can be found at the your-google-project-name.appspot.com
 
 
+##Known Gotchas when using the Google App Engine in the Netbeans IDE
+One problem that I routinely ran into was an error in the auto generated files for the Google App Engine.
+
+`build-impl.xml:1052 The module cannot be deployed: refer to server log for more details`
+
+Which is an incrediblely cryptic error message if you make it a point to never touch the auto-generated files.
+While I am unsure of the cause of this problem, I do know the solution.
+
+Within the Netbeans IDE click on the 'Files' tab in your source code navigator:
+Expand your project name -> click on the 'nbproject' directory -> right click on build-impl.xml -> click on run target -> click on clean
+
+This should rebuild the build-impl.xml file allowing your project to run
+
+
 
 ####Development Notes:
 * Stable Version 1.0 is commit 106 (updated: 6/5/2016)
